@@ -17,8 +17,11 @@ public class Subject {
 	 * @param students
 	 */
 	public Subject(String name, int nrc, String faculty, int credits, int students) {
-		// TODO - implement Subject.Subject
-		throw new UnsupportedOperationException();
+		this.name = name;
+		this.nrc = nrc;
+		this.faculty = faculty;
+		this.credits = credits;
+		this.students = students;
 	}
 
 	public String getName() {

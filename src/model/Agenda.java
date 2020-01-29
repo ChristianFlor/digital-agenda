@@ -1,10 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Agenda {
 
+	private List<Student> students;
+	private List<Subject> subjects;
 	public Agenda() {
-		// TODO - implement Agenda.Agenda
-		throw new UnsupportedOperationException();
+		students = new ArrayList<>();
+		subjects = new ArrayList<>();
 	}
 
 	/**
@@ -16,8 +21,7 @@ public class Agenda {
 	 * @param semester
 	 */
 	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester) {
-		// TODO - implement Agenda.registerStudent
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 	/**
@@ -54,26 +58,35 @@ public class Agenda {
 	 * @param name
 	 */
 	public boolean searchStudentByName(String name) {
-		// TODO - implement Agenda.searchStudentByName
-		throw new UnsupportedOperationException();
+		boolean found = false;
+		for(int i = 0; i < students.size();i++) {
+			if(students.get(i).getName().equals(name)) found = true;
+		}
+		return found;
 	}
 
 	/**
 	 * 
 	 * @param idCode
 	 */
-	public boolean searchStudentByIdCode(int idCode) {
-		// TODO - implement Agenda.searchStudentByIdCode
-		throw new UnsupportedOperationException();
+	public boolean searchStudentByIdCode(String idCode) {
+		boolean found = false;
+		for(int i = 0; i < students.size();i++) {
+			if(students.get(i).getIdCode().equals(idCode)) found = true;
+		}
+		return found;
 	}
 
 	/**
 	 * 
 	 * @param lastName
 	 */
-	public boolean searchStudentByLastName(int lastName) {
-		// TODO - implement Agenda.searchStudentByLastName
-		throw new UnsupportedOperationException();
+	public boolean searchStudentByLastName(String lastName) {
+		boolean found = false;
+		for(int i = 0; i < students.size();i++) {
+			if(students.get(i).getLastName().equals(lastName)) found = true;
+		}
+		return found;
 	}
 
 	/**
@@ -81,8 +94,11 @@ public class Agenda {
 	 * @param email
 	 */
 	public boolean searchStudentByEmail(String email) {
-		// TODO - implement Agenda.searchStudentByEmail
-		throw new UnsupportedOperationException();
+		boolean found = false;
+		for(int i = 0; i < students.size();i++) {
+			if(students.get(i).getEmail().equals(email)) found = true;
+		}
+		return found;
 	}
 
 }
