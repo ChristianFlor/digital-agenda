@@ -3,10 +3,11 @@ package model;
 public class Student {
 
 	private String name;
+	private String lastName;
 	private String idCode;
 	private String program;
 	private String email;
-	private String phoneNumer;
+	private String phoneNumber;
 
 	/**
 	 * 
@@ -16,9 +17,13 @@ public class Student {
 	 * @param program
 	 * @param semester
 	 */
-	public Student(String name, String lastName, String idCode, String program, int semester) {
-		// TODO - implement Student.Student
-		throw new UnsupportedOperationException();
+	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber) {
+		this.name = name;
+		this.lastName = lastName;
+		this.idCode = idCode;
+		this.program = program;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getName() {
@@ -85,15 +90,15 @@ public class Student {
 	}
 
 	public String getPhoneNumer() {
-		return this.phoneNumer;
+		return this.phoneNumber;
 	}
 
 	/**
 	 * 
 	 * @param phoneNumer
 	 */
-	public void setPhoneNumer(String phoneNumer) {
-		this.phoneNumer = phoneNumer;
+	public void setPhoneNumer(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public void getAttribute() {
