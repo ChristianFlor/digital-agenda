@@ -88,7 +88,7 @@ public class Student {
 		this.email = email;
 	}
 
-	public String getPhoneNumer() {
+	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
 
@@ -96,7 +96,7 @@ public class Student {
 	 * 
 	 * @param phoneNumer
 	 */
-	public void setPhoneNumer(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
