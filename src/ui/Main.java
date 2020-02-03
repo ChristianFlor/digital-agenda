@@ -34,7 +34,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) throws IOException {
 		//Agenda a = new Agenda();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("guiDA.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		stage.setTitle("");
