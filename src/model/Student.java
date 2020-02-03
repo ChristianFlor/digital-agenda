@@ -39,8 +39,7 @@ public class Student {
 	}
 
 	public String getLastName() {
-		// TODO - implement Student.getLastName
-		throw new UnsupportedOperationException();
+		return lastName;
 	}
 
 	/**
@@ -48,8 +47,7 @@ public class Student {
 	 * @param lastName
 	 */
 	public void setLastName(String lastName) {
-		// TODO - implement Student.setLastName
-		throw new UnsupportedOperationException();
+		this.lastName = lastName;
 	}
 
 	public String getIdCode() {
@@ -72,9 +70,8 @@ public class Student {
 	 * 
 	 * @param program
 	 */
-	public void setProgram(int program) {
-		// TODO - implement Student.setProgram
-		throw new UnsupportedOperationException();
+	public void setProgram(String program) {
+		this.program = program;
 	}
 
 	public String getEmail() {
@@ -101,18 +98,5 @@ public class Student {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public void getAttribute() {
-		// TODO - implement Student.getAttribute
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param attribute
-	 */
-	public void setAttribute(int attribute) {
-		// TODO - implement Student.setAttribute
-		throw new UnsupportedOperationException();
-	}
 
 }
