@@ -8,6 +8,7 @@ public class Student {
 	private String program;
 	private String email;
 	private String phoneNumber;
+	private String profpic;
 
 	/**
 	 * 
@@ -17,13 +18,14 @@ public class Student {
 	 * @param program
 	 * @param semester
 	 */
-	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber) {
+	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber, String profpic) {
 		this.name = name;
 		this.lastName = lastName;
 		this.idCode = idCode;
 		this.program = program;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.profpic = profpic;
 	}
 
 	public String getName() {
@@ -96,6 +98,14 @@ public class Student {
 	 */
 	public void setPhoneNumer(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getProfpic() {
+		return profpic;
+	}
+
+	public void setProfpic(String profpic) {
+		this.profpic = profpic;
 	}
 
 

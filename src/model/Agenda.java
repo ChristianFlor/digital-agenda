@@ -127,11 +127,15 @@ public class Agenda {
 			String prog = p.getProperty("program");
 			String pp = p.getProperty("profPic");
 			
-			students.add(new Student(name, lName, id, prog, email, pn));
+			students.add(new Student(name, lName, id, prog, email, pn, pp));
 		}
 	}
 
 	public List<Student> getStudents() {
 		return students;
+	}
+	
+	public List<Subject> getSubjects() {
+		return subjects;
 	}
 }
