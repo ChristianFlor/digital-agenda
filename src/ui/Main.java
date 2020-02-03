@@ -35,12 +35,12 @@ public class Main extends Application{
 	public void start(Stage stage) throws IOException {
 		Agenda a = new Agenda();
 		System.out.println(a.getStudents().size());
-		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("guiDA.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("guiDA.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		stage.setTitle("");
 		stage.setScene(scene);
-		stage.show();*/
+		stage.show();
 	}
 
 }
