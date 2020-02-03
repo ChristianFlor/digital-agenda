@@ -34,13 +34,13 @@ public class Agenda {
 	 * @param semester
 	 * @throws IOException 
 	 */
-	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester, String email, String phoneNumber) throws IOException {
+	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester, String email, String profpic, String phoneNumber) throws IOException {
 		boolean possible = true;
 		for(int i =0; i < students.size() && possible; i++) {
 			if(idCode.equals(students.get(i).getIdCode())) possible = true;
 		}
 		if(possible) {
-			students.add(new Student(name, lastName, idCode, program, email, phoneNumber, semester));
+			students.add(new Student(name, lastName, idCode, program, email, phoneNumber, profpic,semester));
 			File f = new File("resources/students/"+idCode+".properties");
 			FileWriter fw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(fw); 
@@ -50,6 +50,7 @@ public class Agenda {
 			bw.append("id="+idCode+"\n");
 			bw.append("phoneNumber="+phoneNumber+"\n");
 			bw.append("program="+program+"\n");
+			bw.append("profpic="+profpic);
 			bw.append("semester="+semester);
 			bw.close();
 		}
@@ -149,7 +150,7 @@ public class Agenda {
 			int semester = Integer.parseInt(p.getProperty("semester"));
 			String pp = p.getProperty("profPic");
 			
-			students.add(new Student(name, lName, id, prog, email, pn, semester));
+			students.add(new Student(name, lName, id, prog, email, pn, pp, semester));
 		}
 	}
 
@@ -171,5 +172,9 @@ public class Agenda {
 	
 	public List<Student> getStudents() {
 		return students;
+	}
+	
+	public List<Subject> getSubjects() {
+		return subjects;
 	}
 }
