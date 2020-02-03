@@ -100,7 +100,6 @@ public class MainController {
     		programStudent.setText(first.getProgram());
     		phoneStudent.setText(first.getPhoneNumer());
     		// falta imagen
-    		actualPosition++;
     	}
     }
     
@@ -108,10 +107,15 @@ public class MainController {
     void nextStudent(ActionEvent event) {
     	actualPosition++;
     	
-    	if(actualPosition>=agenda.getStudents().size() ||agenda.getStudents().get(actualPosition)!=null ) {
-    		
+    	if(actualPosition>=agenda.getStudents().size() ||agenda.getStudents().get(actualPosition)==null ) {
+    		nameStudent.setText("");
+    		emailStudent.setText("");
+    		codeStudent.setText("");
+    		programStudent.setText("");
+    		phoneStudent.setText("");
+    		actualPosition = -1;
     	}
-    	if(agenda.getStudents().get(actualPosition)!=null) {
+    	else {
     		Student first = agenda.getStudents().get(actualPosition);
     		nameStudent.setText(first.getName() + " "+ first.getLastName());
     		emailStudent.setText(first.getEmail());
@@ -119,13 +123,30 @@ public class MainController {
     		programStudent.setText(first.getProgram());
     		phoneStudent.setText(first.getPhoneNumer());
     		// falta imagen
-    		actualPosition++;
     	}
     }
 
     @FXML
     void previousStudent(ActionEvent event) {
-
+    		actualPosition--;
+    	
+    	if(actualPosition<0 ||agenda.getStudents().get(actualPosition)==null ) {
+    		nameStudent.setText("");
+    		emailStudent.setText("");
+    		codeStudent.setText("");
+    		programStudent.setText("");
+    		phoneStudent.setText("");
+    		actualPosition = agenda.getStudents().size();
+    	}
+    	else {
+    		Student first = agenda.getStudents().get(actualPosition);
+    		nameStudent.setText(first.getName() + " "+ first.getLastName());
+    		emailStudent.setText(first.getEmail());
+    		codeStudent.setText(first.getIdCode());
+    		programStudent.setText(first.getProgram());
+    		phoneStudent.setText(first.getPhoneNumer());
+    		// falta imagen
+    	}
     }
     
     @FXML
