@@ -119,13 +119,19 @@ public class Agenda {
 			Properties p = new Properties();
 			p.load(new FileInputStream(propStud.getPath()));
 
-			Enumeration<Object> keys = p.keys();
-
-			for(int i = 0; keys.hasMoreElements(); i++) {
-				Object key = keys.nextElement();
-				System.out.println(key.toString());
-			}
+			String name = p.getProperty("name");
+			String lName = p.getProperty("lastName");
+			String email = p.getProperty("email");
+			String id = p.getProperty("id");
+			String pn = p.getProperty("phoneNumber");
+			String prog = p.getProperty("program");
+			String pp = p.getProperty("profPic");
+			
+			students.add(new Student(name, lName, id, prog, email, pn));
 		}
 	}
 
+	public List<Student> getStudents() {
+		return students;
+	}
 }
