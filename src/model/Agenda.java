@@ -1,15 +1,26 @@
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Properties;
+
 
 public class Agenda {
+	public static String STUDENTS_PATH = "resources/students";
+	public static String SUBJECTS_PATH = "resources/subjects";
 
 	private List<Student> students;
 	private List<Subject> subjects;
-	public Agenda() {
+
+	public Agenda() throws FileNotFoundException, IOException {
 		students = new ArrayList<>();
 		subjects = new ArrayList<>();
+		loadStudents();
 	}
 
 	/**
@@ -99,6 +110,22 @@ public class Agenda {
 			if(students.get(i).getEmail().equals(email)) found = true;
 		}
 		return found;
+	}
+
+	public void loadStudents() throws FileNotFoundException, IOException {
+		File[] studs = new File(STUDENTS_PATH).listFiles();
+		students.clear();
+		for(File propStud : studs) {
+			Properties p = new Properties();
+			p.load(new FileInputStream(propStud.getPath()));
+
+			Enumeration<Object> keys = p.keys();
+
+			for(int i = 0; keys.hasMoreElements(); i++) {
+				Object key = keys.nextElement();
+				System.out.println(key.toString());
+			}
+		}
 	}
 
 }

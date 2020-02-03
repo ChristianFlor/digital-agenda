@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Agenda;
 
 /**
  * This class 
@@ -32,6 +33,7 @@ public class Main extends Application{
 	 */
 	@Override
 	public void start(Stage stage) throws IOException {
+		//Agenda a = new Agenda();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
