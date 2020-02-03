@@ -7,6 +7,7 @@ public class Student {
 	private String idCode;
 	private String program;
 	private String email;
+	private int semester;
 	private String phoneNumber;
 
 	/**
@@ -17,13 +18,14 @@ public class Student {
 	 * @param program
 	 * @param semester
 	 */
-	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber) {
+	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber, int semester) {
 		this.name = name;
 		this.lastName = lastName;
 		this.idCode = idCode;
 		this.program = program;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.semester = semester;
 	}
 
 	public String getName() {

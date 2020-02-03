@@ -1,8 +1,10 @@
 package model;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -30,9 +32,28 @@ public class Agenda {
 	 * @param idCode
 	 * @param program
 	 * @param semester
+	 * @throws IOException 
 	 */
-	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester) {
-		return true;
+	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester, String email, String phoneNumber) throws IOException {
+		boolean possible = true;
+		for(int i =0; i < students.size() && possible; i++) {
+			if(idCode.equals(students.get(i).getIdCode())) possible = true;
+		}
+		if(possible) {
+			students.add(new Student(name, lastName, idCode, program, email, phoneNumber, semester));
+			File f = new File("resources/students/"+idCode+".properties");
+			FileWriter fw = new FileWriter(f);
+			BufferedWriter bw = new BufferedWriter(fw); 
+			bw.append("name="+name+"\n");
+			bw.append("lastName="+lastName+"\n");
+			bw.append("email="+email+"\n");
+			bw.append("id="+idCode+"\n");
+			bw.append("phoneNumber="+phoneNumber+"\n");
+			bw.append("program="+program+"\n");
+			bw.append("semester="+semester);
+			bw.close();
+		}
+		return possible;
 	}
 
 	/**
@@ -125,12 +146,29 @@ public class Agenda {
 			String id = p.getProperty("id");
 			String pn = p.getProperty("phoneNumber");
 			String prog = p.getProperty("program");
+			int semester = Integer.parseInt(p.getProperty("semester"));
 			String pp = p.getProperty("profPic");
 			
-			students.add(new Student(name, lName, id, prog, email, pn));
+			students.add(new Student(name, lName, id, prog, email, pn, semester));
 		}
 	}
 
+	public void loadSubjects() throws FileNotFoundException, IOException {
+		File[] subjs = new File(SUBJECTS_PATH).listFiles();
+		subjects.clear();
+		for(File propStud : subjs) {
+			Properties p = new Properties();
+			p.load(new FileInputStream(propStud.getPath()));
+
+			String name = p.getProperty("name");
+			int nrc = Integer.parseInt(p.getProperty("nrc"));
+			String faculty = p.getProperty("faculty");
+			int credits = Integer.parseInt(p.getProperty("credits"));
+			int students = Integer.parseInt(p.getProperty("students"));
+			subjects.add(new Subject(name, nrc, faculty, credits, students));
+		}
+	}
+	
 	public List<Student> getStudents() {
 		return students;
 	}
