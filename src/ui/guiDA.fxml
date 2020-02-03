@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane prefHeight="702.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
+   <children>
+      <BorderPane>
+         <top>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <MenuBar styleClass="context-menu">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="View">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#aboutProgram" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="779.0" style="-fx-background-color: #4285F4;">
+                     <children>
+                        <ImageView fitHeight="85.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../uiImg/icons/Monitoreo-y-Control.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Digital Agenda " textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="50.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <TabPane prefHeight="384.0" prefWidth="779.0" styleClass="jfx-hamburger-icon" stylesheets="@../CSS/dark-theme.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                  <Tab text="REGISTER">
+                     <content>
+                        <BorderPane prefHeight="452.0" prefWidth="805.0">
+                           <center>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox fillWidth="false" focusTraversable="true" prefHeight="563.0" prefWidth="702.0">
+                                       <children>
+                                          <Separator prefHeight="17.0" prefWidth="364.0" visible="false" />
+                                          <VBox alignment="CENTER" fillWidth="false" prefHeight="535.0" prefWidth="600.0" spacing="10.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
+                                             <children>
+                                                <Label text="Basic details">
+                                                   <font>
+                                                      <Font name="Consolas Bold" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="140.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../uiImg/icons/agregar-usuario.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <HBox alignment="CENTER" focusTraversable="true" prefHeight="194.0" prefWidth="705.0" spacing="8.0">
+                                                   <padding>
+                                                      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <GridPane alignment="CENTER_RIGHT" prefHeight="226.0" prefWidth="697.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="112.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.66665649414062" minWidth="10.0" prefWidth="169.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="0.0" prefWidth="6.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="114.33334350585938" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="188.66665649414062" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label text="Name">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Email:" GridPane.columnIndex="3">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="nameStudent" prefHeight="37.0" prefWidth="95.0" style="-fx-text-fill: black; -fx-background-color: white;" styleClass="context-menu" GridPane.columnIndex="1">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <TextField fx:id="phoneStudent" prefHeight="37.0" prefWidth="95.0" style="-fx-text-fill: black; -fx-background-color: white;" styleClass="context-menu" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <TextField fx:id="emailStudent" prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: white; -fx-text-fill: black;" styleClass="context-menu" GridPane.columnIndex="4">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <Label text="Phone Number:" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Base real:" visible="false" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Uplouad Image:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Button mnemonicParsing="false" onAction="#uploadImage" text="Upload" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                                            <Label text="Program:" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Code:" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="codeStudent" prefHeight="37.0" prefWidth="95.0" style="-fx-text-fill: black; -fx-background-color: white;" styleClass="context-menu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <TextField fx:id="programStudent" prefHeight="37.0" prefWidth="93.0" style="-fx-background-color: white; -fx-text-fill: black;" styleClass="context-menu" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false" onAction="#registerStudent" text="Register Student">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="23.0" visible="false" />
+                                                <Pagination fx:id="pagination" prefHeight="46.0" prefWidth="301.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fillWidth="false" focusTraversable="true" prefHeight="563.0" prefWidth="611.0">
+                                       <children>
+                                          <Separator prefHeight="17.0" prefWidth="364.0" visible="false" />
+                                          <VBox alignment="CENTER" fillWidth="false" prefHeight="535.0" prefWidth="532.0" spacing="10.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
+                                             <children>
+                                                <Label text="Subject">
+                                                   <font>
+                                                      <Font name="Consolas Bold" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <CardPane fx:id="panelSubject" prefHeight="192.0" prefWidth="332.0">
+                                                    <Label style="-fx-padding:10;" text="label1" />
+                                                    <Label style="-fx-padding:10;" text="label2" />
+                                                    <Label style="-fx-padding:10;" text="label3" />
+                                                </CardPane>
+                                                <HBox alignment="CENTER" focusTraversable="true" prefHeight="169.0" prefWidth="503.0" spacing="8.0">
+                                                   <padding>
+                                                      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <GridPane alignment="CENTER_RIGHT" prefHeight="226.0" prefWidth="697.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="112.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.66665649414062" minWidth="10.0" prefWidth="169.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="0.0" prefWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="0.66668701171875" prefWidth="7.3333740234375" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="120.6666259765625" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="90.66668701171875" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label text="Name:">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="NRC:" GridPane.columnIndex="4">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="nameSubject" prefHeight="37.0" prefWidth="138.0" style="-fx-text-fill: black; -fx-background-color: white;" styleClass="context-menu" GridPane.columnIndex="1">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <TextField fx:id="finalGrade" prefHeight="37.0" prefWidth="23.0" style="-fx-text-fill: black; -fx-background-color: white;" styleClass="context-menu" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <TextField fx:id="nrcSubject" prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: white; -fx-text-fill: black;" styleClass="context-menu" GridPane.columnIndex="5">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <Label text="Final Grade:" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Base real:" visible="false" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Name Teacher:" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Departament:" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font name="Verdana" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField fx:id="nameTeacher" prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: white; -fx-text-fill: black;" styleClass="context-menu" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="5.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <ComboBox fx:id="departament" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false" onAction="#addSubject" text="Add Subject" />
+                                                <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="23.0" visible="false" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </center>
+                           <left>
+                              <Separator prefHeight="143.0" prefWidth="8.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <Separator prefHeight="71.0" prefWidth="12.0" BorderPane.alignment="CENTER" />
+                           </right>
+                        </BorderPane>
+                     </content>
+                  </Tab>
+                  <Tab text="STUDENTS">
+                     <content>
+                        <BorderPane prefHeight="452.0" prefWidth="805.0">
+                           <right>
+                              <VBox fillWidth="false" focusTraversable="true" prefHeight="441.0" prefWidth="571.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER" fillWidth="false" prefHeight="151.0" prefWidth="535.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
+                                       <children>
+                                          <HBox prefHeight="38.0" prefWidth="269.0">
+                                             <children>
+                                                <ImageView fitHeight="38.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../uiImg/busqueda.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label prefHeight="30.0" prefWidth="244.0" text="Search Student">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="358.0" spacing="8.0">
+                                             <padding>
+                                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                             </padding>
+                                             <children>
+                                                <ComboBox fx:id="optionsSearch" prefHeight="25.0" prefWidth="97.0" promptText="Search By" style="-fx-background-color: #4285F4; -fx-background-radius: 15; -fx-text-fill: white;" visibleRowCount="5" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="364.0" spacing="8.0">
+                                             <children>
+                                                <TextField fx:id="search" prefHeight="37.0" prefWidth="148.0" promptText="Enter your name" style="-fx-text-fill: black;" />
+                                                <Button mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="75.0" text="Search" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="10.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <Separator prefHeight="10.0" prefWidth="364.0" visible="false" />
+                                    <VBox alignment="CENTER" fillWidth="false" prefHeight="357.0" prefWidth="537.0" spacing="10.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
+                                       <children>
+                                          <Label text="See Data">
+                                             <font>
+                                                <Font name="Consolas Bold" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="foundStudentImg" fitHeight="127.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../uiImg/mario_dubs.png" />
+                                             </image>
+                                          </ImageView>
+                                          <GridPane alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="330.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="149.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="165.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label fx:id="dName" text="Name: ">
+                                                   <font>
+                                                      <Font name="Consolas Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dScore" text="Code:" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Consolas Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dNick" text="Email:" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="Consolas Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dProgram" text="Program:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Consolas Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
+                                    <HBox alignment="CENTER" prefHeight="53.0" prefWidth="531.0">
+                                       <children>
+                                          <Separator prefHeight="42.0" prefWidth="50.0" visible="false" />
+                                          <Button mnemonicParsing="false" onAction="#delete" text="Delete" />
+                                          <Separator prefHeight="42.0" prefWidth="92.0" visible="false" />
+                                          <Button mnemonicParsing="false" onAction="#update" text="Update" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </right>
+                           <left>
+                              <HBox fillHeight="false" prefHeight="563.0" prefWidth="561.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox fillWidth="false" focusTraversable="true" prefHeight="548.0" prefWidth="558.0" spacing="5.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="46.0" prefWidth="508.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#sortId" text="ID" translateX="-10.0" />
+                                                <Button mnemonicParsing="false" onAction="#sortName" prefHeight="39.0" prefWidth="83.0" text="Name" translateX="-5.0" />
+                                                <Button mnemonicParsing="false" onAction="#sortCode" prefHeight="39.0" prefWidth="75.0" text="Code" translateX="5.0" />
+                                                <Button mnemonicParsing="false" onAction="#sortEmail" prefHeight="39.0" prefWidth="67.0" text="Email" translateX="10.0" />
+                                             </children>
+                                          </HBox>
+                                          <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="481.0" prefWidth="543.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="8.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </left>
+                        </BorderPane>
+                     </content>
+                  </Tab>
+                  <Tab text="REPORT">
+                     <content>
+                        <BorderPane prefHeight="452.0" prefWidth="805.0">
+                           <center>
+                              <VBox prefHeight="540.0" prefWidth="643.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER" fillWidth="false" prefHeight="239.0" prefWidth="766.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
+                                       <children>
+                                          <GridPane alignment="CENTER_RIGHT" prefHeight="216.0" prefWidth="587.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.66668701171875" minWidth="10.0" prefWidth="341.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.6666259765625" minWidth="10.0" prefWidth="220.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Promedio de materias matriculadas x estudiante:">
+                                                   <font>
+                                                      <Font name="Verdana" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Materia más matriculada:" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Verdana" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Base real:" visible="false" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Verdana" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Promedio de créditos matriculados x estudiante:" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Verdana" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Materia menos matriculada:" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Verdana" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" prefHeight="23.0" prefWidth="822.0" />
+                                    <Label text="Listado general de materias (orden alfabetico)">
+                                       <font>
+                                          <Font name="Consolas Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="243.0" prefWidth="822.0">
+                                       <children>
+                                          <CardPane prefHeight="243.0" prefWidth="302.0">
+                                              <Label style="-fx-padding:10;" text="label1" />
+                                              <Label style="-fx-padding:10;" text="label2" />
+                                              <Label style="-fx-padding:10;" text="label3" />
+                                          </CardPane>
+                                          <Separator prefHeight="243.0" prefWidth="74.0" visible="false" />
+                                          <TextArea prefHeight="243.0" prefWidth="465.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </center>
+                           <left>
+                              <Separator prefHeight="199.0" prefWidth="146.0" visible="false" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <Separator prefHeight="120.0" prefWidth="177.0" visible="false" BorderPane.alignment="CENTER" />
+                           </right>
+                           <top>
+                              <Separator orientation="VERTICAL" prefHeight="12.0" prefWidth="207.0" visible="false" BorderPane.alignment="CENTER" />
+                           </top>
+                           <bottom>
+                              <Separator orientation="VERTICAL" prefHeight="11.0" prefWidth="251.0" visible="false" BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
