@@ -1,6 +1,7 @@
 package ui;
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import model.*;
@@ -98,8 +100,10 @@ public class MainController {
     		emailStudent.setText(first.getEmail());
     		codeStudent.setText(first.getIdCode());
     		programStudent.setText(first.getProgram());
-    		phoneStudent.setText(first.getPhoneNumer());
-    		// falta imagen
+    		phoneStudent.setText(first.getPhoneNumber());
+    		
+    	Image image = new Image(new File(first.getProfpic()).toURI().toString());
+    		photoStudent.setImage(image);
     	}
     }
     
@@ -108,22 +112,18 @@ public class MainController {
     	actualPosition++;
     	
     	if(actualPosition>=agenda.getStudents().size() ||agenda.getStudents().get(actualPosition)==null ) {
-    		nameStudent.setText("");
-    		emailStudent.setText("");
-    		codeStudent.setText("");
-    		programStudent.setText("");
-    		phoneStudent.setText("");
-    		actualPosition = -1;
-    	}
-    	else {
+    		actualPosition = 0;
+       	}
     		Student first = agenda.getStudents().get(actualPosition);
     		nameStudent.setText(first.getName() + " "+ first.getLastName());
     		emailStudent.setText(first.getEmail());
     		codeStudent.setText(first.getIdCode());
     		programStudent.setText(first.getProgram());
-    		phoneStudent.setText(first.getPhoneNumer());
-    		// falta imagen
-    	}
+    		phoneStudent.setText(first.getPhoneNumber());
+    		
+    		Image image = new Image(new File(first.getProfpic()).toURI().toString());
+    		photoStudent.setImage(image);
+    	
     }
 
     @FXML
@@ -131,27 +131,23 @@ public class MainController {
     		actualPosition--;
     	
     	if(actualPosition<0 ||agenda.getStudents().get(actualPosition)==null ) {
-    		nameStudent.setText("");
-    		emailStudent.setText("");
-    		codeStudent.setText("");
-    		programStudent.setText("");
-    		phoneStudent.setText("");
-    		actualPosition = agenda.getStudents().size();
+    		actualPosition = agenda.getStudents().size()-1;
     	}
-    	else {
     		Student first = agenda.getStudents().get(actualPosition);
     		nameStudent.setText(first.getName() + " "+ first.getLastName());
     		emailStudent.setText(first.getEmail());
     		codeStudent.setText(first.getIdCode());
     		programStudent.setText(first.getProgram());
-    		phoneStudent.setText(first.getPhoneNumer());
-    		// falta imagen
-    	}
+    		phoneStudent.setText(first.getPhoneNumber());
+    		
+    		Image image = new Image(new File(first.getProfpic()).toURI().toString());
+    		photoStudent.setImage(image);
+    	
     }
     
     @FXML
     void aboutProgram(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -171,7 +167,11 @@ public class MainController {
 
     @FXML
     void registerStudent(ActionEvent event) {
-
+    	nameStudent.setText("");
+		emailStudent.setText("");
+		codeStudent.setText("");
+		programStudent.setText("");
+		phoneStudent.setText("");
     }
 
     @FXML

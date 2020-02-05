@@ -148,8 +148,7 @@ public class Agenda {
 			String pn = p.getProperty("phoneNumber");
 			String prog = p.getProperty("program");
 			int semester = Integer.parseInt(p.getProperty("semester"));
-			String pp = p.getProperty("profPic");
-			
+			String pp = p.getProperty("profpic");
 			students.add(new Student(name, lName, id, prog, email, pn, pp, semester));
 		}
 	}
