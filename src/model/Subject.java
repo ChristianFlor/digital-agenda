@@ -1,7 +1,7 @@
 package model;
 
 public class Subject {
-
+	
 	private String name;
 	private int nrc;
 	private String faculty;

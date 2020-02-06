@@ -8,7 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 
@@ -17,11 +19,11 @@ public class Agenda {
 	public static String SUBJECTS_PATH = "resources/subjects";
 
 	private List<Student> students;
-	private List<Subject> subjects;
-
+	private Map<Integer, Subject> subjects;
+	
 	public Agenda() throws FileNotFoundException, IOException {
 		students = new ArrayList<>();
-		subjects = new ArrayList<>();
+		subjects = new HashMap<>();
 		loadStudents();
 	}
 
@@ -70,10 +72,21 @@ public class Agenda {
 	 * 
 	 * @param idCode
 	 * @param nrc
+	 * @throws IOException 
 	 */
-	public boolean addSubjectToStudent(int idCode, int nrc) {
-		// TODO - implement Agenda.addSubjectToStudent
-		throw new UnsupportedOperationException();
+	public boolean addSubjectToStudent(int idCode, int nrc) throws IOException {
+		boolean found = false;
+		for(int i = 0; i < students.size() && !found;i++) {
+			if(students.get(i).getIdCode().equals(idCode)) { found = true;
+				students.get(i).addSubject(subjects.get(nrc));
+				File f = new File("resources/students/"+idCode+".properties");
+				FileWriter fw = new FileWriter(f);
+				BufferedWriter bw = new BufferedWriter(fw); 
+				bw.append("," + nrc);
+				bw.close();
+			}
+		}
+		return found;
 	}
 
 	/**
@@ -90,48 +103,57 @@ public class Agenda {
 	 * 
 	 * @param name
 	 */
-	public boolean searchStudentByName(String name) {
-		boolean found = false;
+	public List<Student> searchStudentByName(String name) {
+		List<Student> list = new ArrayList<>();
 		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getName().equals(name)) found = true;
+			if(students.get(i).getName().equals(name)) {
+				list.add(students.get(i));
+			} 
 		}
-		return found;
+		return list;
 	}
 
 	/**
 	 * 
 	 * @param idCode
 	 */
-	public boolean searchStudentByIdCode(String idCode) {
+	public Student searchStudentByIdCode(String idCode) {
 		boolean found = false;
-		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getIdCode().equals(idCode)) found = true;
+		Student stu = null;
+		for(int i = 0; i < students.size() && !found;i++) {
+			if(students.get(i).getIdCode().equals(idCode)) { found = true;
+				stu = students.get(i);
+			}
 		}
-		return found;
+		return stu;
 	}
 
 	/**
 	 * 
 	 * @param lastName
 	 */
-	public boolean searchStudentByLastName(String lastName) {
-		boolean found = false;
+	public List<Student> searchStudentByLastName(String lastName) {
+		List<Student> list = new ArrayList<>();
 		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getLastName().equals(lastName)) found = true;
+			if(students.get(i).getLastName().equals(lastName)) {
+				list.add(students.get(i));
+			} 
 		}
-		return found;
+		return list;
 	}
 
 	/**
 	 * 
 	 * @param email
 	 */
-	public boolean searchStudentByEmail(String email) {
-		boolean found = false;
+	public List<Student> searchStudentByEmail(String email) {
+		List<Student> list = new ArrayList<>();
 		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getEmail().equals(email)) found = true;
+			if(students.get(i).getEmail().equals(email)) {
+				list.add(students.get(i));
+			} 
 		}
-		return found;
+		return list;
 	}
 
 	public void loadStudents() throws FileNotFoundException, IOException {
@@ -149,7 +171,12 @@ public class Agenda {
 			String prog = p.getProperty("program");
 			int semester = Integer.parseInt(p.getProperty("semester"));
 			String pp = p.getProperty("profpic");
+			String[] subs = p.getProperty("subjects").split(",");
 			students.add(new Student(name, lName, id, prog, email, pn, pp, semester));
+			for (int i = 0; i < subs.length; i++) {
+				int nrc=  Integer.parseInt(subs[i]);
+				students.get(students.size()-1).addSubject(subjects.get(nrc));
+			}
 		}
 	}
 
@@ -165,15 +192,12 @@ public class Agenda {
 			String faculty = p.getProperty("faculty");
 			int credits = Integer.parseInt(p.getProperty("credits"));
 			int students = Integer.parseInt(p.getProperty("students"));
-			subjects.add(new Subject(name, nrc, faculty, credits, students));
+			subjects.put(nrc, new Subject(name, nrc, faculty, credits, students));
 		}
 	}
 	
 	public List<Student> getStudents() {
 		return students;
 	}
-	
-	public List<Subject> getSubjects() {
-		return subjects;
-	}
+
 }

@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
 
 	private String name;
@@ -10,6 +13,7 @@ public class Student {
 	private int semester;
 	private String phoneNumber;
 	private String profpic;
+	private List<Subject> subjects;
 
 	/**
 	 * 
@@ -29,8 +33,13 @@ public class Student {
 		this.phoneNumber = phoneNumber;
 		this.semester = semester;
 		this.profpic = profpic;
+		this.subjects = new ArrayList<>();
 	}
 
+	public boolean addSubject(Subject sub) {
+		return subjects.add(sub);
+	}
+	
 	public String getName() {
 		return this.name;
 	}
