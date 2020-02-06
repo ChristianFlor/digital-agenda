@@ -29,7 +29,7 @@ This project is a mini agenda built with the purpose of mastering the basic conc
 
 ## Made by
   <ul>
-  <li><div><a href="https://github.com/Sleeptightt" title="Cesar Canales">Cesar Alberto Canales Rivera</a></div></li>
+  <li><div><a href="https://github.com/Sleeptightt" title="Cesar Canales">Cesar Leonardo Canales Rivera</a></div></li>
   <li><div><a href="https://github.com/ChristianFlor" title="Christian Flor">Christian David Flor Astudillo</a></div></li>
   <li><div><a href="https://github.com/7yrionLannister" title="Daniel Fernández">Daniel Alejandro Fernández Robles</a></div></li>
   <li><div><a href="https://github.com/Carlosches" title="Carlos Restrepo">Carlos Andrés Restrepo Marín</a></div></li>
