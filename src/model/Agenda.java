@@ -63,9 +63,19 @@ public class Agenda {
 	 * 
 	 * @param idCode
 	 */
-	public boolean deleteStudent(int idCode) {
-		// TODO - implement Agenda.deleteStudent
-		throw new UnsupportedOperationException();
+	public boolean deleteStudent(String idCode) {
+		File f = new File("resources/students/"+idCode+".properties");
+		int index = -1;
+		for(int i = 0; i < students.size()&&index==-1; i++) {
+			if(students.get(i).getIdCode().equals(idCode)) {
+				index = i;
+			}
+		}
+		Student aux = students.remove(index);
+		boolean possible = false;
+		if(f.delete()) possible = true;
+		if(!possible) students.add(aux);
+		return possible;
 	}
 
 	/**
@@ -74,7 +84,7 @@ public class Agenda {
 	 * @param nrc
 	 * @throws IOException 
 	 */
-	public boolean addSubjectToStudent(int idCode, int nrc) throws IOException {
+	public boolean addSubjectToStudent(String idCode, int nrc) throws IOException {
 		boolean found = false;
 		for(int i = 0; i < students.size() && !found;i++) {
 			if(students.get(i).getIdCode().equals(idCode)) { found = true;
@@ -93,10 +103,45 @@ public class Agenda {
 	 * 
 	 * @param idCode
 	 * @param nrc
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public boolean deleteSubjectToStudent(int idCode, int nrc) {
-		// TODO - implement Agenda.deleteSubjectToStudent
-		throw new UnsupportedOperationException();
+	public boolean deleteSubjectToStudent(String idCode, int nrc) throws FileNotFoundException, IOException {
+		File[] studs = new File(STUDENTS_PATH).listFiles();
+		boolean possible = false, possible2 = false;
+		for(File propStud : studs) {
+			Properties p = new Properties();
+			p.load(new FileInputStream(propStud.getPath()));
+			if(p.getProperty("id").equals(idCode)) {
+				String[] subs = p.getProperty("subjects").split(",");
+				String subjectss = "";
+				int cnt = 0;
+				for (int i = 0; i < subs.length; i++) {
+					int nrcc=  Integer.parseInt(subs[i]);
+					if(nrcc!=nrc) {
+						if(cnt>0) {
+							subjectss += ","+nrcc;
+						}else
+							subjectss += nrcc;
+					}else
+						possible = true;
+				}
+				p.setProperty("subjects", subjectss);
+			}
+			
+		}
+		for (int i = 0; i < students.size()&&!possible2; i++) {
+			if(students.get(i).getIdCode().equals(idCode)) {
+				List<Subject> list = students.get(i).getSubjects();
+				for (int j = 0; j < list.size() && !possible2; j++) {
+					if(list.get(j).getNrc()==nrc) {
+						list.remove(j);
+						possible2 = true;
+					}
+				}
+			}
+		}
+		return (possible&&possible2);
 	}
 
 	/**

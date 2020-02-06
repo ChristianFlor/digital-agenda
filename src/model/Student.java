@@ -120,5 +120,8 @@ public class Student {
 		this.profpic = profpic;
 	}
 
+	public List<Subject> getSubjects(){
+		return subjects;
+	}
 
 }
