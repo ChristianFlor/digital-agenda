@@ -128,7 +128,6 @@ public class AgendaTest {
 		assertEquals(name, st.getName(), "There is something fishy with either the constructor of Student class or the method that registers students.");
 		assertEquals(st.getName(), p.getProperty("name"), "Properties did not match");
 		assertEquals(lname, st.getLastname(), "There is something fishy with either the constructor of Student class or the method that registers students.");
-		System.out.println(p.getProperty("lastName") + "++++++");
 		assertEquals(st.getLastname(), p.getProperty("lastName"), "Properties did not match");
 		assertEquals(email, st.getEmail(), "There is something fishy with either the constructor of Student class or the method that registers students.");
 		assertEquals(st.getEmail(), p.getProperty("email"), "Properties did not match");
@@ -151,6 +150,39 @@ public class AgendaTest {
 		
 		File deleteMeImJustATestFile = new File(Agenda.STUDENTS_PATH+"/"+code+".properties");
 		deleteMeImJustATestFile.delete();
+	}
+	
+	@Test
+	public void deleteStudentTest() {
+		setupStage2();
+		List<Student> sts = agenda.getStudents();
+		
+		//add a fake student to do the test and keep data safe
+		
+		String name = "Sonic";
+		String lname = "TheHedgehog";
+		String code = "A00000000";
+		String prog = "Ingenieria de sistemas";
+		int sem = 6;
+		String email = "speedysonic@example.com";
+		String profpic = "resources/avatars/avatar1.png";
+		String pn = "3111111111";
+		
+		try {
+			agenda.registerStudent(name, lname, code, prog, sem, email, profpic, pn);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		int originalSize = sts.size();
+		
+		//fake student added
+		
+		assertTrue(agenda.deleteStudent(code), "It should return TRUE as the student and the respective file were recently created so they could be deleted");
+		assertEquals(originalSize, sts.size()+1, "If the student was deleted, then the size should have decreased by one");
+		originalSize = sts.size();
+		assertFalse(agenda.deleteStudent("I am a nonsense String"), "There is not a student with that id so the method should have not deleted anything");
+		assertEquals(originalSize, sts.size(), "As there was nothing to delete, the size should have not changed");
+		
 	}
 
 }

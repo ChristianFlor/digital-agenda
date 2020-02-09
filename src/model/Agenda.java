@@ -73,18 +73,13 @@ public class Agenda {
 	 */
 	public boolean deleteStudent(String idCode) {
 		File f = new File(STUDENTS_PATH+"/"+idCode+".properties");
-		int index = -1;
-		for(int i = 0; i < students.size()&&index==-1; i++) {
-			System.out.println(students.get(i).getIdCode());
+		for(int i = 0; i < students.size(); i++) {
 			if(students.get(i).getIdCode().equals(idCode)) {
-				index = i;
+				students.remove(students.get(i));
+				break;
 			}
 		}
-		Student aux = students.remove(index);
-		boolean possible = false;
-		if(f.delete()) possible = true;
-		if(!possible) students.add(aux);
-		return possible;
+		return f.delete();
 	}
 
 	/**
