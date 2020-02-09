@@ -158,8 +158,14 @@ public class MainController {
     }
 
     @FXML
-    void addSubject(ActionEvent event) {
-
+    void addSubject(ActionEvent event) throws IOException {
+    	String name = nameSubject.getText();
+    	int nrc = Integer.parseInt(nrcSubject.getText());
+        String faculty = txtFaculty.getText();;
+        int credits = Integer.parseInt(txtCredits.getText());
+        agenda.addSubjectToStudent(codeStudent.getText(), name, nrc, faculty, credits, 0);
+        
+        subjectList.getItems().add(nrc+" "+name);
     }
 
     @FXML
@@ -199,7 +205,6 @@ public class MainController {
     	String code = codeStudent.getText();
     	String phone = phoneStudent.getText();
     	String profpic = photoStudent.getImage().impl_getUrl();
-    	System.out.println(profpic);
     	boolean verification = name!="" && email!="" && program!=""&&code!=""&&phone!="";
     	if(verification) {
     		String[] fullName = name.split(" ");

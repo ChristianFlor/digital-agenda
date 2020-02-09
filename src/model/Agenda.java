@@ -81,21 +81,49 @@ public class Agenda {
 		}
 		return f.delete();
 	}
-
+	
+	
 	/**
 	 * 
 	 * @param idCode
 	 * @param nrc
 	 * @throws IOException 
 	 */
-	public boolean addSubjectToStudent(String idCode, int nrc) throws IOException {
+	public boolean addSubjectToStudent(String idCode, String name, int nrc, String faculty, int credits, int numberStudents) throws IOException {
 		boolean found = false;
 		for(int i = 0; i < students.size() && !found;i++) {
-			if(students.get(i).getIdCode().equals(idCode)) { found = true;
+			if(students.get(i).getIdCode().equals(idCode)) { 
+				found = true;
+				if(!subjects.containsKey(nrc)) {
+				
+					Subject sub = new Subject(name,nrc,faculty,credits,numberStudents);
+					File f = new File("resources/subjects/"+nrc+".properties");
+					FileWriter fw = new FileWriter(f);
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.append("name="+name+"\n");
+					bw.append("nrc="+nrc+"\n");
+					bw.append("faculty="+faculty+"\n");
+					bw.append("credits="+credits+"\n");
+					bw.append("students="+1+"\n");
+					bw.close();
+					subjects.put(nrc, sub);
+				}else {
+					File f = new File("resources/subjects/"+nrc+".properties");
+					
+					Properties p = new Properties();
+					FileInputStream is = new FileInputStream(f.getPath());
+					p.load(is);
+					int students = Integer.parseInt(p.getProperty("students"));
+					FileWriter fw = new FileWriter(f);
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.append("students="+(students+1)+"\n");
+					bw.close();
+				}
 				students.get(i).addSubject(subjects.get(nrc));
 				File f = new File("resources/students/"+idCode+".properties");
 				FileWriter fw = new FileWriter(f);
-				BufferedWriter bw = new BufferedWriter(fw); 
+				BufferedWriter bw = new BufferedWriter(fw);
+				
 				bw.append("," + nrc);
 				bw.close();
 			}
