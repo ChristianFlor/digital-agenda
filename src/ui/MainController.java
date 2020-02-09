@@ -22,7 +22,9 @@ import javafx.scene.layout.VBox;
 import model.*;
 
 public class MainController {
-
+	
+	@FXML
+    private Button btnConfirm;
     @FXML
     private TextField nameStudent;
 
@@ -122,7 +124,7 @@ public class MainController {
     }
     private void showInformation(int position) {
     	Student next = agenda.getStudents().get(position);
-		nameStudent.setText(next.getName() + " "+ next.getLastName());
+		nameStudent.setText(next.getName() );
 		emailStudent.setText(next.getEmail());
 		codeStudent.setText(next.getIdCode());
 		programStudent.setText(next.getProgram());
@@ -172,11 +174,37 @@ public class MainController {
 
     @FXML
     void registerStudent(ActionEvent event) {
-    	nameStudent.setText("");
-		emailStudent.setText("");
-		codeStudent.setText("");
-		programStudent.setText("");
-		phoneStudent.setText("");
+    	nameStudent.clear();
+		emailStudent.clear();
+		codeStudent.clear();
+		programStudent.clear();
+		phoneStudent.clear();
+		Image img = new Image(new File("src/uiImg/icons/agregar-usuario.png").toURI().toString());
+		photoStudent.setImage(img);
+		
+		subjectList.getItems().clear();
+		subjectList.getItems().clear();
+		btnConfirm.setVisible(true);
+		nameSubject.clear();
+        nrcSubject.clear();
+        txtFaculty.clear();
+        txtCredits.clear();
+		
+    }
+    @FXML
+    void ConfirmRegistration(ActionEvent event) throws IOException {
+    	String name = nameStudent.getText();
+    	String email = emailStudent.getText();
+    	String program = programStudent.getText();
+    	String code = codeStudent.getText();
+    	String phone = phoneStudent.getText();
+    	String profpic = photoStudent.getImage().impl_getUrl();
+    	System.out.println(profpic);
+    	boolean verification = name!="" && email!="" && program!=""&&code!=""&&phone!="";
+    	if(verification) {
+    		String[] fullName = name.split(" ");
+    		agenda.registerStudent(fullName[0], fullName[1], code, program, 0, email, profpic, phone);
+    	}
     }
 
     @FXML

@@ -6,7 +6,7 @@ import java.util.List;
 public class Student {
 
 	private String name;
-	private String lastName;
+	private String lname;
 	private String idCode;
 	private String program;
 	private String email;
@@ -23,15 +23,15 @@ public class Student {
 	 * @param program
 	 * @param semester
 	 */
-	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
+	public Student(String name, String ln, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
 
 		this.name = name;
-		this.lastName = lastName;
+		lname = ln;
 		this.idCode = idCode;
 		this.program = program;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.semester = semester;
+		this.setSemester(semester);
 		this.profpic = profpic;
 		this.subjects = new ArrayList<>();
 	}
@@ -52,17 +52,6 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * 
-	 * @param lastName
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public String getIdCode() {
 		return this.idCode;
@@ -122,6 +111,22 @@ public class Student {
 
 	public List<Subject> getSubjects(){
 		return subjects;
+	}
+
+	public String getLastname() {
+		return lname;
+	}
+
+	public void setLastname(String lname) {
+		this.lname = lname;
+	}
+
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
 	}
 
 }

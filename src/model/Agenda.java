@@ -41,18 +41,19 @@ public class Agenda {
 	 * @param semester
 	 * @throws IOException 
 	 */
-	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester, String email, String profpic, String phoneNumber) throws IOException {
+	public boolean registerStudent(String name, String lname, String idCode, String program, int semester, String email, String profpic, String phoneNumber) throws IOException {
 		boolean possible = true;
 		for(int i =0; i < students.size() && possible; i++) {
 			if(idCode.equals(students.get(i).getIdCode())) possible = false;
 		}
 		if(possible) {
-			students.add(new Student(name, lastName, idCode, program, email, phoneNumber, profpic,semester));
+			students.add(new Student(name, lname, idCode, program, email, phoneNumber, profpic,semester));
 			File f = new File(STUDENTS_PATH+"/"+idCode+".properties");
 			FileWriter fw = new FileWriter(f);
-			BufferedWriter bw = new BufferedWriter(fw); 
+			BufferedWriter bw = new BufferedWriter(fw);
+			
 			bw.append("name="+name+"\n");
-			bw.append("lastName="+lastName+"\n");
+			bw.append("lastName="+lname+"\n");
 			bw.append("email="+email+"\n");
 			bw.append("id="+idCode+"\n");
 			bw.append("phoneNumber="+phoneNumber+"\n");
@@ -74,6 +75,7 @@ public class Agenda {
 		File f = new File(STUDENTS_PATH+"/"+idCode+".properties");
 		int index = -1;
 		for(int i = 0; i < students.size()&&index==-1; i++) {
+			System.out.println(students.get(i).getIdCode());
 			if(students.get(i).getIdCode().equals(idCode)) {
 				index = i;
 			}
@@ -180,19 +182,7 @@ public class Agenda {
 		return stu;
 	}
 
-	/**
-	 * 
-	 * @param lastName
-	 */
-	public List<Student> searchStudentByLastName(String lastName) {
-		List<Student> list = new ArrayList<>();
-		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getLastName().equals(lastName)) {
-				list.add(students.get(i));
-			} 
-		}
-		return list;
-	}
+	
 
 	/**
 	 * 
@@ -217,7 +207,7 @@ public class Agenda {
 			p.load(inputStream);
 
 			String name = p.getProperty("name");
-			String lName = p.getProperty("lastName");
+			String lname = p.getProperty("lasName");
 			String email = p.getProperty("email");
 			String id = p.getProperty("id");
 			String pn = p.getProperty("phoneNumber");
@@ -225,7 +215,7 @@ public class Agenda {
 			int semester = Integer.parseInt(p.getProperty("semester"));
 			String pp = p.getProperty("profpic");
 			String[] subs = p.getProperty("subjects").split(",");
-			students.add(new Student(name, lName, id, prog, email, pn, pp, semester));
+			students.add(new Student(name, lname, id, prog, email, pn, pp, semester));
 			for (int i = 0; i < subs.length; i++) {
 				int nrc=  Integer.parseInt(subs[i]);
 				students.get(students.size()-1).addSubject(subjects.get(nrc));
