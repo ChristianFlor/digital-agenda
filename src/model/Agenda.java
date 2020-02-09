@@ -44,11 +44,11 @@ public class Agenda {
 	public boolean registerStudent(String name, String lastName, String idCode, String program, int semester, String email, String profpic, String phoneNumber) throws IOException {
 		boolean possible = true;
 		for(int i =0; i < students.size() && possible; i++) {
-			if(idCode.equals(students.get(i).getIdCode())) possible = true;
+			if(idCode.equals(students.get(i).getIdCode())) possible = false;
 		}
 		if(possible) {
 			students.add(new Student(name, lastName, idCode, program, email, phoneNumber, profpic,semester));
-			File f = new File("resources/students/"+idCode+".properties");
+			File f = new File(STUDENTS_PATH+"/"+idCode+".properties");
 			FileWriter fw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(fw); 
 			bw.append("name="+name+"\n");
@@ -57,9 +57,11 @@ public class Agenda {
 			bw.append("id="+idCode+"\n");
 			bw.append("phoneNumber="+phoneNumber+"\n");
 			bw.append("program="+program+"\n");
-			bw.append("profpic="+profpic);
+			bw.append("profpic="+profpic+"\n");
 			bw.append("semester="+semester);
+			
 			bw.close();
+			fw.close();
 		}
 		return possible;
 	}
@@ -69,7 +71,7 @@ public class Agenda {
 	 * @param idCode
 	 */
 	public boolean deleteStudent(String idCode) {
-		File f = new File("resources/students/"+idCode+".properties");
+		File f = new File(STUDENTS_PATH+"/"+idCode+".properties");
 		int index = -1;
 		for(int i = 0; i < students.size()&&index==-1; i++) {
 			if(students.get(i).getIdCode().equals(idCode)) {
@@ -211,7 +213,8 @@ public class Agenda {
 		students.clear();
 		for(File propStud : studs) {
 			Properties p = new Properties();
-			p.load(new FileInputStream(propStud.getPath()));
+			FileInputStream inputStream = new FileInputStream(propStud.getPath());
+			p.load(inputStream);
 
 			String name = p.getProperty("name");
 			String lName = p.getProperty("lastName");
@@ -228,6 +231,8 @@ public class Agenda {
 				students.get(students.size()-1).addSubject(subjects.get(nrc));
 				
 			}
+			
+			inputStream.close();
 		}
 	}
 
@@ -236,7 +241,8 @@ public class Agenda {
 		subjects.clear();
 		for(File propStud : subjs) {
 			Properties p = new Properties();
-			p.load(new FileInputStream(propStud.getPath()));
+			FileInputStream is = new FileInputStream(propStud.getPath());
+			p.load(is);
 
 			String name = p.getProperty("name");
 			int nrc = Integer.parseInt(p.getProperty("nrc"));
@@ -244,6 +250,8 @@ public class Agenda {
 			int credits = Integer.parseInt(p.getProperty("credits"));
 			int students = Integer.parseInt(p.getProperty("students"));
 			subjects.put(nrc, new Subject(name, nrc, faculty, credits, students));
+			
+			is.close();
 		}
 	}
 	

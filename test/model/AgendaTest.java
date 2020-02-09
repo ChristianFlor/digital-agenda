@@ -3,6 +3,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,6 +24,16 @@ public class AgendaTest {
 		agenda = null;
 	}
 	
+	private void setupStage2() {
+		try {
+			agenda = new Agenda();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Test
 	public void CreateAgendaAndLoadInfoTest() {
 		setupStage1();
@@ -41,7 +52,9 @@ public class AgendaTest {
 			String id = st.getIdCode();
 			Properties p = new Properties();
 			try {
-				p.load(new FileInputStream(Agenda.STUDENTS_PATH+"/"+id+".properties"));
+				FileInputStream is = new FileInputStream(Agenda.STUDENTS_PATH+"/"+id+".properties");
+				p.load(is);
+				is.close();
 			} catch (FileNotFoundException e) {
 				fail();
 			} catch (IOException e) {
@@ -62,7 +75,9 @@ public class AgendaTest {
 		for(int n = nrcs.next(); nrcs.hasNext(); n = nrcs.next()) {
 			Properties p = new Properties();
 			try {
-				p.load(new FileInputStream(Agenda.SUBJECTS_PATH+"/"+n+".properties"));
+				FileInputStream is = new FileInputStream(Agenda.SUBJECTS_PATH+"/"+n+".properties");
+				p.load(is);
+				is.close();
 			} catch (FileNotFoundException e) {
 				fail();
 			} catch (IOException e) {
@@ -76,6 +91,66 @@ public class AgendaTest {
 			assertEquals(sub.getCredits()+"", p.getProperty("credits"), "Properties did not match");
 			assertEquals(sub.getStudents()+"", p.getProperty("students"), "Properties did not match");
 		}
+	}
+	
+	@Test
+	public void registerStudentTest() {
+		setupStage2();
+		List<Student> sts = agenda.getStudents();
+		int originalSize = sts.size();
+		String name = "Sonic";
+		String lname = "TheHedgehog";
+		String code = "A00000000";
+		String prog = "Ingenieria de sistemas";
+		int sem = 6;
+		String email = "speedysonic@example.com";
+		String profpic = "resources/avatars/avatar1.png";
+		String pn = "3111111111";
+		
+		try {
+			agenda.registerStudent(name, lname, code, prog, sem, email, profpic, pn);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(originalSize, sts.size() - 1, "There should be one more student");
+		Student st = sts.get(sts.size()-1); //get last added
+		Properties p = new Properties();
+		try {
+			FileInputStream is = new FileInputStream(Agenda.STUDENTS_PATH+"/"+code+".properties");
+			p.load(is);
+			is.close();
+		} catch (FileNotFoundException e) {
+			fail();
+		} catch (IOException e) {
+			fail();
+		}
+		
+		assertEquals(name, st.getName(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getName(), p.getProperty("name"), "Properties did not match");
+		assertEquals(lname, st.getLastName(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getLastName(), p.getProperty("lastName"), "Properties did not match");
+		assertEquals(email, st.getEmail(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getEmail(), p.getProperty("email"), "Properties did not match");
+		assertEquals(code, st.getIdCode(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getIdCode(), p.getProperty("id"), "Properties did not match");
+		assertEquals(pn, st.getPhoneNumber(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getPhoneNumber(), p.getProperty("phoneNumber"), "Properties did not match");
+		assertEquals(prog, st.getProgram(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getProgram(), p.getProperty("program"), "Properties did not match");
+		assertEquals(profpic, st.getProfpic(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getProfpic(), p.getProperty("profpic"), "Properties did not match");
+		
+		originalSize = sts.size();
+		assertEquals(originalSize, sts.size(), "The student should not have been registered because he is in the system already");
+		try {
+			agenda.registerStudent(name, lname, code, prog, sem, email, profpic, pn);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		File deleteMeImJustATestFile = new File(Agenda.STUDENTS_PATH+"/"+code+".properties");
+		deleteMeImJustATestFile.delete();
 	}
 
 }
