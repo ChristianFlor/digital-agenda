@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -135,16 +134,6 @@ public class Agenda {
 		}
 		return found;
 	}
-/**
-  name=Johann
-lastName = Ocampo
-email=johann0117@live.com
-id=A00295744
-phoneNumber=3156352436
-program=Ingenieria de sistemas
-profpic=resources/avatars/avatar1.png
-semester=5
-subjects=10014,10239,10445*/
  
 	/**
 	 * 
@@ -226,14 +215,14 @@ subjects=10014,10239,10445*/
 	 * 
 	 * @param email
 	 */
-	public List<Student> searchStudentByEmail(String email) {
-		List<Student> list = new ArrayList<>();
+	public Student searchStudentByEmail(String email) {
+		Student stu = null;
 		for(int i = 0; i < students.size();i++) {
 			if(students.get(i).getEmail().equals(email)) {
-				list.add(students.get(i));
+				stu = students.get(i);
 			} 
 		}
-		return list;
+		return stu;
 	}
 
 	public void loadStudents() throws FileNotFoundException, IOException {

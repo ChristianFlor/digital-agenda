@@ -23,10 +23,10 @@ public class Student {
 	 * @param program
 	 * @param semester
 	 */
-	public Student(String name, String ln, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
+	public Student(String name, String lname, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
 
 		this.name = name;
-		lname = ln;
+		this.lname = lname;
 		this.idCode = idCode;
 		this.program = program;
 		this.email = email;
@@ -113,11 +113,13 @@ public class Student {
 		return subjects;
 	}
 
-	public String getLastname() {
+	
+
+	public String getLname() {
 		return lname;
 	}
 
-	public void setLastname(String lname) {
+	public void setLname(String lname) {
 		this.lname = lname;
 	}
 

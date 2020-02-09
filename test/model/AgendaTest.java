@@ -127,8 +127,8 @@ public class AgendaTest {
 		
 		assertEquals(name, st.getName(), "There is something fishy with either the constructor of Student class or the method that registers students.");
 		assertEquals(st.getName(), p.getProperty("name"), "Properties did not match");
-		assertEquals(lname, st.getLastname(), "There is something fishy with either the constructor of Student class or the method that registers students.");
-		assertEquals(st.getLastname(), p.getProperty("lastName"), "Properties did not match");
+		assertEquals(lname, st.getLname(), "There is something fishy with either the constructor of Student class or the method that registers students.");
+		assertEquals(st.getLname(), p.getProperty("lastName"), "Properties did not match");
 		assertEquals(email, st.getEmail(), "There is something fishy with either the constructor of Student class or the method that registers students.");
 		assertEquals(st.getEmail(), p.getProperty("email"), "Properties did not match");
 		assertEquals(code, st.getIdCode(), "There is something fishy with either the constructor of Student class or the method that registers students.");

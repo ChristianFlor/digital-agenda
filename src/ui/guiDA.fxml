@@ -12,6 +12,8 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -399,7 +401,18 @@
                                                 <Button mnemonicParsing="false" onAction="#sortEmail" prefHeight="39.0" prefWidth="67.0" text="Email" translateX="10.0" />
                                              </children>
                                           </HBox>
-                                          <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="481.0" prefWidth="543.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;" />
+                                          <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="481.0" prefWidth="543.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;">
+                                             <children>
+                                                <TableView fx:id="foundStudent" prefHeight="163.0" prefWidth="539.0">
+                                                  <columns>
+                                                    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                                                    <TableColumn fx:id="lastColumn" prefWidth="99.0" text="Last Name" />
+                                                      <TableColumn fx:id="codeColumn" prefWidth="69.0" text="idCode" />
+                                                      <TableColumn fx:id="emailColumn" prefWidth="57.0" text="Email" />
+                                                      <TableColumn fx:id="numberColumn" prefWidth="116.0" text="PhoneNumber" />
+                                                  </columns>
+                                                </TableView>
+                                             </children></VBox>
                                        </children>
                                        <padding>
                                           <Insets left="8.0" />

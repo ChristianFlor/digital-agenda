@@ -4,6 +4,10 @@ package ui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 //import com.gluonhq.charm.glisten.control.CardPane;
 
@@ -15,7 +19,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -54,7 +61,7 @@ public class MainController {
     @FXML
     private TextField txtFaculty;
     @FXML
-    private ComboBox<?> optionsSearch;
+    private ComboBox<String> optionsSearch;
 
     @FXML
     private TextField search;
@@ -88,6 +95,25 @@ public class MainController {
     
     @FXML
     private ListView<String> subjectList;
+    
+    
+    @FXML
+    private TableView<Student> foundStudent;
+
+    @FXML
+    private TableColumn<Student, String> nameColumn;
+
+    @FXML
+    private TableColumn<Student, String> lastColumn;
+
+    @FXML
+    private TableColumn<Student, String> codeColumn;
+
+    @FXML
+    private TableColumn<Student, String> emailColumn;
+
+    @FXML
+    private TableColumn<Student, String> numberColumn;
 
     private Agenda agenda;
     private int actualPosition;
@@ -100,6 +126,14 @@ public class MainController {
     		showInformation(0);
     		
     	}
+    	optionsSearch.getItems().addAll("Name", "idCode","Email");
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
+        lastColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("lname"));
+        codeColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("idCode"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
+        numberColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("phoneNumber"));
+    	
     }
  
 	@FXML
@@ -235,7 +269,32 @@ public class MainController {
 
     @FXML
     void search(ActionEvent event) {
-
+    	
+    	String option = optionsSearch.getValue();
+    	String value = search.getText();
+    	List<Student> founds = null;
+    	
+    	if(option!="" && value!="") {
+    		if(option.equalsIgnoreCase("name")) {
+    			founds = agenda.searchStudentByName(value);
+    			
+    			ObservableList<Student> info = (ObservableList<Student>) founds;
+    			foundStudent.setItems(info);
+    			
+    		}else if(option.equalsIgnoreCase("idCode")) {
+    			
+    			Student found = agenda.searchStudentByIdCode(value);
+    			if(found!=null) {
+    				foundStudent.getItems().add(found);
+    			}
+    		}else if(option.equalsIgnoreCase("email")) {
+    			Student found = agenda.searchStudentByEmail(value);
+    			if(found!=null) {
+    				foundStudent.getItems().add(found);
+    			}
+    		}
+    	}
+    	
     }
 
     @FXML
