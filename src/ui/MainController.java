@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -87,6 +88,9 @@ public class MainController {
     @FXML
     private Button btnNext;
     
+    @FXML
+    private ListView<String> subjectList;
+
     private Agenda agenda;
     private int actualPosition;
     
@@ -102,8 +106,12 @@ public class MainController {
     		programStudent.setText(first.getProgram());
     		phoneStudent.setText(first.getPhoneNumber());
     		
-    	Image image = new Image(new File(first.getProfpic()).toURI().toString());
+    		Image image = new Image(new File(first.getProfpic()).toURI().toString());
     		photoStudent.setImage(image);
+    		for (int i = 0; i<first.getSubjects().size(); i++) {
+    			subjectList.getItems().add(first.getSubjects().get(i).getName());
+			}
+    		
     	}
     }
     
@@ -114,15 +122,19 @@ public class MainController {
     	if(actualPosition>=agenda.getStudents().size() ||agenda.getStudents().get(actualPosition)==null ) {
     		actualPosition = 0;
        	}
-    		Student first = agenda.getStudents().get(actualPosition);
-    		nameStudent.setText(first.getName() + " "+ first.getLastName());
-    		emailStudent.setText(first.getEmail());
-    		codeStudent.setText(first.getIdCode());
-    		programStudent.setText(first.getProgram());
-    		phoneStudent.setText(first.getPhoneNumber());
+    		Student next = agenda.getStudents().get(actualPosition);
+    		nameStudent.setText(next.getName() + " "+ next.getLastName());
+    		emailStudent.setText(next.getEmail());
+    		codeStudent.setText(next.getIdCode());
+    		programStudent.setText(next.getProgram());
+    		phoneStudent.setText(next.getPhoneNumber());
     		
-    		Image image = new Image(new File(first.getProfpic()).toURI().toString());
+    		Image image = new Image(new File(next.getProfpic()).toURI().toString());
     		photoStudent.setImage(image);
+    		subjectList.getItems().clear();
+    		for (int i = 0; i<next.getSubjects().size(); i++) {
+    			subjectList.getItems().add(next.getSubjects().get(i).getName());
+			}
     	
     }
 
@@ -133,15 +145,19 @@ public class MainController {
     	if(actualPosition<0 ||agenda.getStudents().get(actualPosition)==null ) {
     		actualPosition = agenda.getStudents().size()-1;
     	}
-    		Student first = agenda.getStudents().get(actualPosition);
-    		nameStudent.setText(first.getName() + " "+ first.getLastName());
-    		emailStudent.setText(first.getEmail());
-    		codeStudent.setText(first.getIdCode());
-    		programStudent.setText(first.getProgram());
-    		phoneStudent.setText(first.getPhoneNumber());
+    		Student previous = agenda.getStudents().get(actualPosition);
+    		nameStudent.setText(previous.getName() + " "+ previous.getLastName());
+    		emailStudent.setText(previous.getEmail());
+    		codeStudent.setText(previous.getIdCode());
+    		programStudent.setText(previous.getProgram());
+    		phoneStudent.setText(previous.getPhoneNumber());
     		
-    		Image image = new Image(new File(first.getProfpic()).toURI().toString());
+    		Image image = new Image(new File(previous.getProfpic()).toURI().toString());
     		photoStudent.setImage(image);
+    		subjectList.getItems().clear();
+    		for (int i = 0; i<previous.getSubjects().size(); i++) {
+    			subjectList.getItems().add(previous.getSubjects().get(i).getName());
+			}
     	
     }
     

@@ -24,6 +24,7 @@ public class Agenda {
 	public Agenda() throws FileNotFoundException, IOException {
 		students = new ArrayList<>();
 		subjects = new HashMap<>();
+		loadSubjects();
 		loadStudents();
 	}
 
@@ -221,6 +222,7 @@ public class Agenda {
 			for (int i = 0; i < subs.length; i++) {
 				int nrc=  Integer.parseInt(subs[i]);
 				students.get(students.size()-1).addSubject(subjects.get(nrc));
+				
 			}
 		}
 	}
