@@ -10,6 +10,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -109,7 +110,11 @@ public class MainController {
     		actualPosition = 0;
        	}
     		showInformation(actualPosition);
-    	
+    		nameStudent.clear();
+    		emailStudent.clear();
+    		codeStudent.clear();
+    		programStudent.clear();
+    		phoneStudent.clear();
     }
 
     @FXML
@@ -120,7 +125,11 @@ public class MainController {
     		actualPosition = agenda.getStudents().size()-1;
     	}
     	showInformation(actualPosition);
-    	
+    	nameStudent.clear();
+		emailStudent.clear();
+		codeStudent.clear();
+		programStudent.clear();
+		phoneStudent.clear();
     }
     private void showInformation(int position) {
     	Student next = agenda.getStudents().get(position);
@@ -209,7 +218,14 @@ public class MainController {
     	if(verification) {
     		String[] fullName = name.split(" ");
     		agenda.registerStudent(fullName[0], fullName[1], code, program, 0, email, profpic, phone);
+    		
+    		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	    alert.setHeaderText(null);
+    	    alert.setTitle("Confirmation");
+    	    alert.setContentText("a new student has registered");
+    	    alert.showAndWait();
     	}
+    	
     }
 
     @FXML

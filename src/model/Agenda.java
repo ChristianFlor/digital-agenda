@@ -108,7 +108,7 @@ public class Agenda {
 					bw.close();
 					subjects.put(nrc, sub);
 				}else {
-					File f = new File("resources/subjects/"+nrc+".properties");
+					/*File f = new File("resources/subjects/"+nrc+".properties");
 					
 					Properties p = new Properties();
 					FileInputStream is = new FileInputStream(f.getPath());
@@ -117,20 +117,35 @@ public class Agenda {
 					FileWriter fw = new FileWriter(f);
 					BufferedWriter bw = new BufferedWriter(fw);
 					bw.append("students="+(students+1)+"\n");
-					bw.close();
+					bw.close();*/
 				}
 				students.get(i).addSubject(subjects.get(nrc));
-				File f = new File("resources/students/"+idCode+".properties");
-				FileWriter fw = new FileWriter(f);
-				BufferedWriter bw = new BufferedWriter(fw);
 				
-				bw.append("," + nrc);
-				bw.close();
+				File f = new File("resources/students/"+idCode+".properties");
+				Properties p = new Properties();
+				FileInputStream is = new FileInputStream(f.getPath());
+				p.load(is);
+				String curr = p.getProperty("subjects")+","+nrc;
+				
+				p.setProperty("subjects",curr);
+				p.store(new FileWriter(f), "add subject");
+				is.close();
+				
 			}
 		}
 		return found;
 	}
-
+/**
+  name=Johann
+lastName = Ocampo
+email=johann0117@live.com
+id=A00295744
+phoneNumber=3156352436
+program=Ingenieria de sistemas
+profpic=resources/avatars/avatar1.png
+semester=5
+subjects=10014,10239,10445*/
+ 
 	/**
 	 * 
 	 * @param idCode

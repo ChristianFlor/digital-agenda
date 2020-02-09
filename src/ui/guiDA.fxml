@@ -178,7 +178,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#ConfirmRegistration" text="Confirm" />
+                                                <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#ConfirmRegistration" text="Confirm" visible="false" />
                                                 <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="23.0" visible="false" />
                                                 <HBox prefHeight="90.0" prefWidth="319.0">
                                                    <children>
