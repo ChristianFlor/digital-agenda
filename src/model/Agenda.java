@@ -28,6 +28,10 @@ public class Agenda {
 		loadStudents();
 	}
 
+	public Map<Integer, Subject> getSubjects() {
+		return subjects;
+	}
+
 	/**
 	 * 
 	 * @param name
