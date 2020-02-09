@@ -6,7 +6,6 @@ import java.util.List;
 public class Student {
 
 	private String name;
-	private String lastName;
 	private String idCode;
 	private String program;
 	private String email;
@@ -23,10 +22,9 @@ public class Student {
 	 * @param program
 	 * @param semester
 	 */
-	public Student(String name, String lastName, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
+	public Student(String name, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
 
 		this.name = name;
-		this.lastName = lastName;
 		this.idCode = idCode;
 		this.program = program;
 		this.email = email;
@@ -52,17 +50,6 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * 
-	 * @param lastName
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public String getIdCode() {
 		return this.idCode;

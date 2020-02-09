@@ -45,7 +45,6 @@ public class AgendaTest {
 			}
 			
 			assertEquals(st.getName(), p.getProperty("name"), "Properties did not match");
-			assertEquals(st.getLastName(), p.getProperty("lastName"), "Properties did not match");
 			assertEquals(st.getEmail(), p.getProperty("email"), "Properties did not match");
 			assertEquals(st.getIdCode(), p.getProperty("id"), "Properties did not match");
 			assertEquals(st.getPhoneNumber(), p.getProperty("phoneNumber"), "Properties did not match");
