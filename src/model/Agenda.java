@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -299,10 +300,36 @@ public class Agenda {
 	
 	public List<Subject> converToList(){
 		List<Subject> subs = new ArrayList<>();
-		for (Subject subject : subs) {
-			subs.add(subject);
+		for (Map.Entry<Integer, Subject> e : subjects.entrySet()) {
+			subs.add(e.getValue());
 		}
 		return subs;
+	}
+	
+	public Subject mostMatriculated() {
+		List<Subject> subs = converToList();
+		subs.sort(new Comparator<Subject>() {
+
+			@Override
+			public int compare(Subject o1, Subject o2) {
+				return o1.getStudents()-o2.getStudents();
+			}
+			
+		});
+		return subs.get(subs.size()-1);
+	}
+	
+	public Subject lessMatriculated() {
+		List<Subject> subs = converToList();
+		subs.sort(new Comparator<Subject>() {
+
+			@Override
+			public int compare(Subject o1, Subject o2) {
+				return o1.getStudents()-o2.getStudents();
+			}
+			
+		});
+		return subs.get(0);
 	}
 	public List<Student> getStudents() {
 		return students;
