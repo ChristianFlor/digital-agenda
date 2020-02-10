@@ -413,16 +413,7 @@
                                        <children>
                                           <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="545.0" prefWidth="590.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;">
                                              <children>
-                                                <HBox alignment="CENTER" prefHeight="56.0" prefWidth="539.0">
-                                                   <children>
-                                                      <Button mnemonicParsing="false" onAction="#sortName" text="Name" translateX="-10.0" />
-                                                      <Button mnemonicParsing="false" onAction="#sortLastName" prefHeight="39.0" prefWidth="100.0" text="LastName" translateX="-5.0" />
-                                                      <Button mnemonicParsing="false" onAction="#sortIdCode" prefHeight="39.0" prefWidth="80.0" text="IdCode" translateX="5.0" />
-                                                      <Button mnemonicParsing="false" onAction="#sortEmail" prefHeight="39.0" prefWidth="67.0" text="Email" translateX="10.0" />
-                                                      <Button mnemonicParsing="false" onAction="#sortPhoneNumber" prefHeight="39.0" prefWidth="128.0" text="PhoneNumber" translateX="20.0" />
-                                                   </children>
-                                                </HBox>
-                                                <TableView fx:id="foundStudent" prefHeight="464.0" prefWidth="539.0">
+                                                <TableView fx:id="foundStudent" prefHeight="487.0" prefWidth="586.0">
                                                   <columns>
                                                     <TableColumn fx:id="nameColumn" prefWidth="111.00003051757812" text="Name" />
                                                     <TableColumn fx:id="lastColumn" prefWidth="103.99996948242188" text="Last Name" />
