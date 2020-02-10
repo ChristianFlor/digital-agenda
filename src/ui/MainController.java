@@ -169,7 +169,7 @@ public class MainController {
     	agenda = new Agenda();
     	actualPosition = 0;
     	if(agenda.getStudents().get(0)!=null) {
-    		showInformation(0);
+    		showInformation(1);
     		
     	}
     	optionsSearch.getItems().addAll("Name", "idCode","Email");
