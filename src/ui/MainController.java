@@ -254,7 +254,8 @@ public class MainController {
 		phoneStudent.setText(next.getPhoneNumber());
 
 		Image image = new Image(new File(next.getProfpic()).toURI().toString());
-		photoStudent.setImage(image);
+		//photoStudent.setImage(image);
+		photoStudent.setImage(new Image(next.getProfpic()));
 		subjectList.getItems().clear();
 
 		for (int i = 0; i<next.getSubjects().size(); i++) {
@@ -288,11 +289,6 @@ public class MainController {
 	}
 
 	@FXML
-	public void aboutProgram(ActionEvent event) {
-
-	}
-
-	@FXML
 	public void addSubject(ActionEvent event) throws IOException {
 		String name = nameSubject.getText();
 		int nrc = Integer.parseInt(nrcSubject.getText());
@@ -322,10 +318,6 @@ public class MainController {
 		}
 	}
 
-	@FXML
-	public void exit(ActionEvent event) {
-
-	}
 
 	@FXML
 	public void registerStudent(ActionEvent event) {
@@ -368,10 +360,6 @@ public class MainController {
 
 	}
 
-	@FXML
-	public void save(ActionEvent event) {
-
-	}
 
 	@FXML
 	public void search(ActionEvent event) {
