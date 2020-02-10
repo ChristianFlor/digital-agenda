@@ -125,8 +125,12 @@ public class Agenda {
 				Properties p = new Properties();
 				FileInputStream is = new FileInputStream(f.getPath());
 				p.load(is);
-				String curr = p.getProperty("subjects")+","+nrc;
-				
+				String curr = "";
+				if(p.getProperty("subjects")!=null) {
+					 curr = p.getProperty("subjects")+nrc+",";
+				}else {
+					 curr = nrc+",";
+				}
 				p.setProperty("subjects",curr);
 				p.store(new FileWriter(f), "add subject");
 				is.close();
@@ -164,6 +168,8 @@ public class Agenda {
 						possible = true;
 				}
 				p.setProperty("subjects", subjectss);
+				p.store(new FileWriter(propStud), "add subject");
+				
 			}
 			
 		}
