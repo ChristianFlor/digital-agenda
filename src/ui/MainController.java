@@ -254,7 +254,8 @@ public class MainController {
 		phoneStudent.setText(next.getPhoneNumber());
 
 		Image image = new Image(new File(next.getProfpic()).toURI().toString());
-		photoStudent.setImage(image);
+		//photoStudent.setImage(image);
+		photoStudent.setImage(new Image(next.getProfpic()));
 		subjectList.getItems().clear();
 
 		for (int i = 0; i<next.getSubjects().size(); i++) {
@@ -283,11 +284,6 @@ public class MainController {
 		for (int i = 0; i < subs.size(); i++) {
 			subjectsTable.getItems().add(subs.get(i));
 		}
-
-	}
-
-	@FXML
-	public void aboutProgram(ActionEvent event) {
 
 	}
 
@@ -321,10 +317,6 @@ public class MainController {
 		}
 	}
 
-	@FXML
-	public void exit(ActionEvent event) {
-
-	}
 
 	@FXML
 	public void registerStudent(ActionEvent event) {
@@ -367,10 +359,6 @@ public class MainController {
 
 	}
 
-	@FXML
-	public void save(ActionEvent event) {
-
-	}
 
 	@FXML
 	public void search(ActionEvent event) {
