@@ -210,7 +210,7 @@ public class MainController {
 	@FXML
 	public void calculate(ActionEvent event) {
 		avarageSubjects.setText(""+agenda.calculateAverageSubjects());
-		//avarageCredits.setText(""+agenda.calculateAverageCredits());
+		avarageCredits.setText(""+agenda.calculateAverageCredits());
 		moreMatriculated.setText(agenda.mostMatriculated().getName());
 		lessMatriculated.setText(agenda.lessMatriculated().getName());
 
@@ -254,8 +254,8 @@ public class MainController {
 		phoneStudent.setText(next.getPhoneNumber());
 
 		Image image = new Image(new File(next.getProfpic()).toURI().toString());
-		//photoStudent.setImage(image);
-		photoStudent.setImage(new Image(next.getProfpic()));
+		photoStudent.setImage(image);
+		//photoStudent.setImage(new Image(next.getProfpic()));
 		subjectList.getItems().clear();
 
 		for (int i = 0; i<next.getSubjects().size(); i++) {
