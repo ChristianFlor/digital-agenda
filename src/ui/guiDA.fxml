@@ -172,7 +172,9 @@
                                                             <Image url="@../uiImg/icons/espalda.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Separator prefHeight="64.0" prefWidth="196.0" visible="false" />
+                                                      <Separator prefHeight="64.0" prefWidth="62.0" visible="false" />
+                                                      <Button mnemonicParsing="false" onAction="#updateStudent" prefHeight="39.0" prefWidth="98.0" text="update" />
+                                                      <Separator prefHeight="64.0" prefWidth="58.0" visible="false" />
                                                       <ImageView fx:id="btnNext" fitHeight="64.0" fitWidth="65.0" onMouseClicked="#nextStudent" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@../uiImg/icons/flecha.png" />

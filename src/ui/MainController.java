@@ -254,8 +254,8 @@ public class MainController {
 		phoneStudent.setText(next.getPhoneNumber());
 
 		Image image = new Image(new File(next.getProfpic()).toURI().toString());
-		//photoStudent.setImage(image);
-		photoStudent.setImage(new Image(next.getProfpic()));
+		photoStudent.setImage(image);
+		//photoStudent.setImage(new Image(next.getProfpic()));
 		subjectList.getItems().clear();
 
 		for (int i = 0; i<next.getSubjects().size(); i++) {
@@ -405,7 +405,21 @@ public class MainController {
 			alert.showAndWait();
 		}
     }
-
+	 @FXML
+	 void updateStudent(ActionEvent event) throws IOException {
+		 String name = nameStudent.getText();
+		 String email = emailStudent.getText();
+		 String code = codeStudent.getText();
+		 String program = programStudent.getText();
+		 String phone = phoneStudent.getText();
+		 agenda.editSudent(actualPosition, code, name, email, program, phone);
+		 
+		 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setHeaderText(null);
+			alert.setTitle("Confirmation");
+			alert.setContentText("the information of the student has been update");
+			alert.showAndWait();
+	}
 	@FXML
 	public void uploadImage(ActionEvent event) {
 
