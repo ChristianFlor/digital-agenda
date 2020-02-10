@@ -188,7 +188,7 @@ public class Agenda {
 	public List<Student> searchStudentByName(String name) {
 		List<Student> list = new ArrayList<>();
 		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getName().equalsIgnoreCase(name)) {
+			if(students.get(i).getName().toUpperCase().contains(name.toUpperCase())) {
 				list.add(students.get(i));
 			} 
 		}
@@ -198,7 +198,7 @@ public class Agenda {
 	public List<Student> searchStudentByLastName(String lname) {
 		List<Student> list = new ArrayList<>();
 		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getLastname().equalsIgnoreCase(lname)) {
+			if(students.get(i).getLastname().toUpperCase().contains(lname.toUpperCase())) {
 				list.add(students.get(i));
 			} 
 		}
@@ -246,7 +246,7 @@ public class Agenda {
 			p.load(inputStream);
 
 			String name = p.getProperty("name");
-			String lname = p.getProperty("lasName");
+			String lname = p.getProperty("lastName");
 			String email = p.getProperty("email");
 			String id = p.getProperty("id");
 			String pn = p.getProperty("phoneNumber");

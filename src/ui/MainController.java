@@ -179,7 +179,7 @@ public class MainController {
 	private void initializeTables() {
 
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
-		lastColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("lname"));
+		lastColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("lastname"));
 		codeColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("idCode"));
 		emailColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
 		numberColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("phoneNumber"));
@@ -379,32 +379,29 @@ public class MainController {
 		String value = search.getText();
 		List<Student> founds = null;
 
-		if(option!="" && value!="") {
-			if(option.equalsIgnoreCase("name")) {
-				founds = agenda.searchStudentByName(value);
+		if(option.equalsIgnoreCase("name")) {
+			founds = agenda.searchStudentByName(value);
 
-				ObservableList<Student> info = FXCollections.observableArrayList( founds );
-				foundStudent.setItems(info);
+			ObservableList<Student> info = FXCollections.observableArrayList( founds );
+			foundStudent.setItems(info);
 
-			}else if(option.equalsIgnoreCase("idCode")) {
+		}else if(option.equalsIgnoreCase("idCode")) {
 
-				Student found = agenda.searchStudentByIdCode(value);
-				if(found!=null) {
-					foundStudent.getItems().add(found);
-				}
-			}else if(option.equalsIgnoreCase("email")) {
-				Student found = agenda.searchStudentByEmail(value);
-				if(found!=null) {
-					foundStudent.getItems().add(found);
-				}
-			} else if(option.equalsIgnoreCase("lastName")) {
-				founds = agenda.searchStudentByName(value);
-
-				ObservableList<Student> info = FXCollections.observableArrayList( founds );
-				foundStudent.setItems(info);
+			Student found = agenda.searchStudentByIdCode(value);
+			if(found!=null) {
+				foundStudent.getItems().add(found);
 			}
+		}else if(option.equalsIgnoreCase("email")) {
+			Student found = agenda.searchStudentByEmail(value);
+			if(found!=null) {
+				foundStudent.getItems().add(found);
+			}
+		} else if(option.equalsIgnoreCase("lastName")) {
+			founds = agenda.searchStudentByLastName(value);
+			
+			ObservableList<Student> info = FXCollections.observableArrayList( founds );
+			foundStudent.setItems(info);
 		}
-
 	}
 
 

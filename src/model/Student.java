@@ -6,7 +6,7 @@ import java.util.List;
 public class Student {
 
 	private String name;
-	private String lname;
+	private String lastname;
 	private String idCode;
 	private String program;
 	private String email;
@@ -26,7 +26,7 @@ public class Student {
 	public Student(String name, String lname, String idCode, String program, String email, String phoneNumber,String profpic, int semester) {
 
 		this.name = name;
-		this.lname = lname;
+		this.lastname = lname;
 		this.idCode = idCode;
 		this.program = program;
 		this.email = email;
@@ -116,11 +116,11 @@ public class Student {
 	
 
 	public String getLastname() {
-		return lname;
+		return lastname;
 	}
 
 	public void setLastname(String lname) {
-		this.lname = lname;
+		this.lastname = lname;
 	}
 
 	public int getSemester() {
