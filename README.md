@@ -28,11 +28,9 @@ This project is a mini agenda built with the purpose of mastering the basic conc
   ![Overview](resources/overview/main-view.png?raw=true)
 
 ## Made by
-  <ul>
-  <li><div><a href="https://github.com/Sleeptightt" title="Cesar Canales">Cesar Leonardo Canales Rivera</a></div></li>
-  <li><div><a href="https://github.com/ChristianFlor" title="Christian Flor">Christian David Flor Astudillo</a></div></li>
-  <li><div><a href="https://github.com/7yrionLannister" title="Daniel Fernández">Daniel Alejandro Fernández Robles</a></div></li>
-  <li><div><a href="https://github.com/Carlosches" title="Carlos Restrepo">Carlos Andrés Restrepo Marín</a></div></li>
-  </ul> 
++ [Cesar Leonardo Canales Rivera](https://github.com/Sleeptightt "Cesar Canales")
++ [Christian David Flor Astudillo](https://github.com/ChristianFlor "Christian Flor")
++ [Daniel Alejandro Fernández Robles](https://github.com/7yrionLannister "Daniel Fernández")
++ [Carlos Andrés Restrepo Marín](https://github.com/Carlosches "Carlos Restrepo")
 
   [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)

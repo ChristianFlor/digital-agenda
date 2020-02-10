@@ -351,5 +351,42 @@ public class Agenda {
 	public List<Student> getStudents() {
 		return students;
 	}
+	public boolean editSudent(int index, String id,String name, String email, String program, String phoneNumber) throws IOException {
+		boolean can = false;
+		Student curr = students.get(index);
+		String idCode = curr.getIdCode();
+		curr.setIdCode(id);
+		curr.setName(name);
+		curr.setEmail(email);
+		curr.setProgram(program);
+		curr.setPhoneNumber(phoneNumber);
+		File[] studs = new File(STUDENTS_PATH).listFiles();
+		boolean possible = false, possible2 = false;
+		for(File propStud : studs) {
+			Properties p = new Properties();
+			p.load(new FileInputStream(propStud.getPath()));
+			if(p.getProperty("id").equals(idCode)) {
+				p.setProperty("name", curr.getName());
+				p.setProperty("lastName", curr.getLastname());
+				p.setProperty("email", curr.getEmail());
+				p.setProperty("id", curr.getIdCode());
+				p.setProperty("phoneNumber", curr.getName());
+				p.setProperty("program", curr.getProgram());
+				p.setProperty("profPic", curr.getProfpic());
+				p.setProperty("semester", ""+curr.getSemester());
+				String subs = "";
+				for (int i = 0; i < curr.getSubjects().size(); i++) {
+					subs+=""+curr.getSubjects().get(i).getNrc()+",";
+				}
+				p.setProperty("subjects", subs);
+				can = true;
+			}
+				
+				p.store(new FileWriter(propStud), "add subject");
+				
+			}
+			
+		return can;
+	}
 
 }

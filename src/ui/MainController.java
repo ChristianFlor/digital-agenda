@@ -30,6 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import model.*;
 
 public class MainController {
@@ -405,11 +406,28 @@ public class MainController {
 			alert.showAndWait();
 		}
     }
-
+	 @FXML
+	 void updateStudent(ActionEvent event) throws IOException {
+		 String name = nameStudent.getText();
+		 String email = emailStudent.getText();
+		 String code = codeStudent.getText();
+		 String program = programStudent.getText();
+		 String phone = phoneStudent.getText();
+		 agenda.editSudent(actualPosition, code, name, email, program, phone);
+		 
+		 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setHeaderText(null);
+			alert.setTitle("Confirmation");
+			alert.setContentText("the information of the student has been update");
+			alert.showAndWait();
+	}
 	@FXML
 	public void uploadImage(ActionEvent event) {
-
+		FileChooser fc = new FileChooser();
+		File f = fc.showOpenDialog(btnConfirm.getScene().getWindow());
+		photoStudent.setImage(new Image(f.toURI().toString()));
 	}
+	
 	@FXML
 	public void sortEmail(ActionEvent event) {
 
