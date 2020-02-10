@@ -188,7 +188,17 @@ public class Agenda {
 	public List<Student> searchStudentByName(String name) {
 		List<Student> list = new ArrayList<>();
 		for(int i = 0; i < students.size();i++) {
-			if(students.get(i).getName().equals(name)) {
+			if(students.get(i).getName().equalsIgnoreCase(name)) {
+				list.add(students.get(i));
+			} 
+		}
+		return list;
+	}
+	
+	public List<Student> searchStudentByLastName(String lname) {
+		List<Student> list = new ArrayList<>();
+		for(int i = 0; i < students.size();i++) {
+			if(students.get(i).getLastname().equalsIgnoreCase(lname)) {
 				list.add(students.get(i));
 			} 
 		}
@@ -200,11 +210,11 @@ public class Agenda {
 	 * @param idCode
 	 */
 	public Student searchStudentByIdCode(String idCode) {
-		boolean found = false;
 		Student stu = null;
-		for(int i = 0; i < students.size() && !found;i++) {
-			if(students.get(i).getIdCode().equals(idCode)) { found = true;
+		for(int i = 0; i < students.size();i++) {
+			if(students.get(i).getIdCode().equals(idCode)) {
 				stu = students.get(i);
+				break;
 			}
 		}
 		return stu;
@@ -221,6 +231,7 @@ public class Agenda {
 		for(int i = 0; i < students.size();i++) {
 			if(students.get(i).getEmail().equals(email)) {
 				stu = students.get(i);
+				break;
 			} 
 		}
 		return stu;

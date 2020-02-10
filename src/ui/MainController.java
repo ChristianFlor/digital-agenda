@@ -165,7 +165,7 @@ public class MainController {
     private int actualPosition;
     
     @FXML
-    void initialize() throws FileNotFoundException, IOException {
+    public void initialize() throws FileNotFoundException, IOException {
     	agenda = new Agenda();
     	actualPosition = 0;
     	if(agenda.getStudents().get(0)!=null) {
@@ -208,7 +208,7 @@ public class MainController {
     }
     
     @FXML
-    void calculate(ActionEvent event) {
+    public void calculate(ActionEvent event) {
     	avarageSubjects.setText(""+agenda.calculateAverageSubjects());
     	//avarageCredits.setText(""+agenda.calculateAverageCredits());
     	moreMatriculated.setText(agenda.mostMatriculated().getName());
@@ -219,7 +219,7 @@ public class MainController {
 
    
 	@FXML
-    void nextStudent(MouseEvent event) {
+	public void nextStudent(MouseEvent event) {
     	actualPosition++;
     	
     	if(actualPosition>=agenda.getStudents().size() ||agenda.getStudents().get(actualPosition)==null ) {
@@ -233,7 +233,7 @@ public class MainController {
     }
 
     @FXML
-    void previousStudent(MouseEvent event) {
+    public void previousStudent(MouseEvent event) {
     		actualPosition--;
     	
     	if(actualPosition<0 ||agenda.getStudents().get(actualPosition)==null ) {
@@ -276,7 +276,7 @@ public class MainController {
 		});
     }
     @FXML
-    void showTable(ActionEvent event) {
+    public void showTable(ActionEvent event) {
     	subjectsTable.getItems().clear();
     	List<Subject> subs = agenda.converToList();
     	Collections.sort(subs);
@@ -287,12 +287,12 @@ public class MainController {
     }
 
     @FXML
-    void aboutProgram(ActionEvent event) {
+    public void aboutProgram(ActionEvent event) {
     	
     }
 
     @FXML
-    void addSubject(ActionEvent event) throws IOException {
+    public void addSubject(ActionEvent event) throws IOException {
     	String name = nameSubject.getText();
     	int nrc = Integer.parseInt(nrcSubject.getText());
         String faculty = txtFaculty.getText();;
@@ -303,7 +303,7 @@ public class MainController {
     }
 
     @FXML
-    void delete(ActionEvent event) {
+    public void delete(ActionEvent event) {
     	if(!foundName.getText().isEmpty()) {
     		agenda.deleteStudent(foundCode.getText());
     		
@@ -322,12 +322,12 @@ public class MainController {
     }
 
     @FXML
-    void exit(ActionEvent event) {
+    public void exit(ActionEvent event) {
 
     }
 
     @FXML
-    void registerStudent(ActionEvent event) {
+    public void registerStudent(ActionEvent event) {
     	nameStudent.clear();
 		emailStudent.clear();
 		codeStudent.clear();
@@ -346,7 +346,7 @@ public class MainController {
 		
     }
     @FXML
-    void ConfirmRegistration(ActionEvent event) throws IOException {
+    public void ConfirmRegistration(ActionEvent event) throws IOException {
     	String name = nameStudent.getText();
     	String email = emailStudent.getText();
     	String program = programStudent.getText();
@@ -368,12 +368,12 @@ public class MainController {
     }
 
     @FXML
-    void save(ActionEvent event) {
+    public void save(ActionEvent event) {
 
     }
 
     @FXML
-    void search(ActionEvent event) {
+    public void search(ActionEvent event) {
     	
     	String option = optionsSearch.getValue();
     	String value = search.getText();
@@ -404,31 +404,31 @@ public class MainController {
 
 
     @FXML
-    void uploadImage(ActionEvent event) {
+    public void uploadImage(ActionEvent event) {
 
     }
     @FXML
-    void sortEmail(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sortIdCode(ActionEvent event) {
+    public void sortEmail(ActionEvent event) {
 
     }
 
     @FXML
-    void sortLastName(ActionEvent event) {
+    public void sortIdCode(ActionEvent event) {
 
     }
 
     @FXML
-    void sortName(ActionEvent event) {
+    public void sortLastName(ActionEvent event) {
 
     }
 
     @FXML
-    void sortPhoneNumber(ActionEvent event) {
+    public void sortName(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void sortPhoneNumber(ActionEvent event) {
 
     }
 }

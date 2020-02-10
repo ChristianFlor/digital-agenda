@@ -115,11 +115,11 @@ public class Student {
 
 	
 
-	public String getLname() {
+	public String getLastname() {
 		return lname;
 	}
 
-	public void setLname(String lname) {
+	public void setLastname(String lname) {
 		this.lname = lname;
 	}
 
