@@ -114,6 +114,19 @@ public class MainController {
 
     @FXML
     private TableColumn<Student, String> numberColumn;
+    
+    @FXML
+    private TextField foundName;
+
+
+    @FXML
+    private TextField foundEmail;
+
+    @FXML
+    private TextField foundCode;
+    
+    @FXML
+    private TextField foundProgram;
 
     private Agenda agenda;
     private int actualPosition;
@@ -133,7 +146,22 @@ public class MainController {
         codeColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("idCode"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
         numberColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("phoneNumber"));
-    	
+        
+        foundStudent.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				if(event.getClickCount()==2) {
+					foundName.setText(foundStudent.getSelectionModel().getSelectedItem().getName());
+					foundCode.setText(foundStudent.getSelectionModel().getSelectedItem().getIdCode());
+					foundProgram.setText(foundStudent.getSelectionModel().getSelectedItem().getProgram());
+					foundEmail.setText(foundStudent.getSelectionModel().getSelectedItem().getEmail());
+					Image image = new Image(new File(foundStudent.getSelectionModel().getSelectedItem().getProfpic()).toURI().toString());
+					foundStudentImg.setImage(image);
+				}
+			}
+        	
+        });
     }
  
 	@FXML
@@ -144,11 +172,10 @@ public class MainController {
     		actualPosition = 0;
        	}
     		showInformation(actualPosition);
-    		nameStudent.clear();
-    		emailStudent.clear();
-    		codeStudent.clear();
-    		programStudent.clear();
-    		phoneStudent.clear();
+    		nameSubject.clear();
+    		nrcSubject.clear();
+    		txtFaculty.clear();
+    		txtCredits.clear();
     }
 
     @FXML
@@ -159,11 +186,10 @@ public class MainController {
     		actualPosition = agenda.getStudents().size()-1;
     	}
     	showInformation(actualPosition);
-    	nameStudent.clear();
-		emailStudent.clear();
-		codeStudent.clear();
-		programStudent.clear();
-		phoneStudent.clear();
+    	nameSubject.clear();
+		nrcSubject.clear();
+		txtFaculty.clear();
+		txtCredits.clear();
     }
     private void showInformation(int position) {
     	Student next = agenda.getStudents().get(position);
@@ -213,7 +239,21 @@ public class MainController {
 
     @FXML
     void delete(ActionEvent event) {
-
+    	if(!foundName.getText().isEmpty()) {
+    		agenda.deleteStudent(foundCode.getText());
+    		
+    		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	    alert.setHeaderText(null);
+    	    alert.setTitle("Confirmation");
+    	    alert.setContentText("the student has been deleted");
+    	    alert.showAndWait();
+    	}else {
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+    	    alert.setHeaderText(null);
+    	    alert.setTitle("Error");
+    	    alert.setContentText("first select a student");
+    	    alert.showAndWait();
+    	}
     }
 
     @FXML

@@ -343,36 +343,60 @@
                                                 <Image url="@../uiImg/mario_dubs.png" />
                                              </image>
                                           </ImageView>
-                                          <GridPane alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="330.0">
+                                          <GridPane alignment="CENTER_RIGHT" prefHeight="133.0" prefWidth="514.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="149.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="165.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="235.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="230.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label fx:id="dName" text="Name: ">
-                                                   <font>
-                                                      <Font name="Consolas Bold" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="dScore" text="Code:" GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font name="Consolas Bold" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="dNick" text="Email:" GridPane.columnIndex="1">
-                                                   <font>
-                                                      <Font name="Consolas Bold" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="dProgram" text="Program:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font name="Consolas Bold" size="14.0" />
-                                                   </font>
-                                                </Label>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label fx:id="dName" text="Name: ">
+                                                         <font>
+                                                            <Font name="Consolas Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
+                                                      <TextField fx:id="foundName" prefHeight="37.0" prefWidth="169.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <Label fx:id="dNick" text="Email:">
+                                                         <font>
+                                                            <Font name="Consolas Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
+                                                      <TextField fx:id="foundEmail" prefHeight="37.0" prefWidth="169.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                   <children>
+                                                      <Label fx:id="dScore" text="Code:">
+                                                         <font>
+                                                            <Font name="Consolas Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
+                                                      <TextField fx:id="foundCode" prefHeight="37.0" prefWidth="169.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <children>
+                                                      <Label fx:id="dProgram" text="Program:">
+                                                         <font>
+                                                            <Font name="Consolas Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
+                                                      <TextField fx:id="foundProgram" prefHeight="37.0" prefWidth="169.0" />
+                                                   </children>
+                                                </HBox>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -403,13 +427,13 @@
                                           </HBox>
                                           <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="481.0" prefWidth="543.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;">
                                              <children>
-                                                <TableView fx:id="foundStudent" prefHeight="163.0" prefWidth="539.0">
+                                                <TableView fx:id="foundStudent" prefHeight="322.0" prefWidth="539.0">
                                                   <columns>
                                                     <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-                                                    <TableColumn fx:id="lastColumn" prefWidth="99.0" text="Last Name" />
-                                                      <TableColumn fx:id="codeColumn" prefWidth="69.0" text="idCode" />
-                                                      <TableColumn fx:id="emailColumn" prefWidth="57.0" text="Email" />
-                                                      <TableColumn fx:id="numberColumn" prefWidth="116.0" text="PhoneNumber" />
+                                                    <TableColumn fx:id="lastColumn" prefWidth="140.0" text="Last Name" />
+                                                      <TableColumn fx:id="codeColumn" prefWidth="105.0" text="idCode" />
+                                                      <TableColumn fx:id="emailColumn" prefWidth="76.0" text="Email" />
+                                                      <TableColumn fx:id="numberColumn" prefWidth="140.0" text="PhoneNumber" />
                                                   </columns>
                                                 </TableView>
                                              </children></VBox>
