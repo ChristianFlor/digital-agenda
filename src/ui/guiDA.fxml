@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="702.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
+<StackPane prefHeight="702.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
    <children>
       <BorderPane>
          <top>
@@ -90,7 +90,7 @@
                                                       <Image url="@../uiImg/icons/agregar-usuario.png" />
                                                    </image>
                                                 </ImageView>
-                                                <HBox alignment="CENTER" focusTraversable="true" prefHeight="194.0" prefWidth="705.0" spacing="8.0">
+                                                <HBox alignment="CENTER" focusTraversable="true" prefHeight="425.0" prefWidth="596.0" spacing="8.0">
                                                    <padding>
                                                       <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                                    </padding>
@@ -174,18 +174,30 @@
                                                       </GridPane>
                                                    </children>
                                                 </HBox>
-                                                <Button mnemonicParsing="false" onAction="#registerStudent" text="Register Student">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Button>
-                                                <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#ConfirmRegistration" text="Confirm" visible="false" />
-                                                <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="23.0" visible="false" />
-                                                <HBox prefHeight="90.0" prefWidth="319.0">
+                                                <HBox alignment="CENTER" prefHeight="39.0" prefWidth="534.0">
                                                    <children>
-                                                      <Button fx:id="btnPrevious" mnemonicParsing="false" onAction="#previousStudent" text="previous" />
-                                                      <Separator prefHeight="70.0" prefWidth="146.0" />
-                                                      <Button fx:id="btnNext" mnemonicParsing="false" onAction="#nextStudent" text="next" />
+                                                      <Button mnemonicParsing="false" onAction="#registerStudent" text="Register Student" translateX="40.0">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Button>
+                                                      <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#ConfirmRegistration" text="Confirm" translateX="70.0" visible="false" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="23.0" visible="false" />
+                                                <HBox prefHeight="92.0" prefWidth="319.0">
+                                                   <children>
+                                                      <ImageView fx:id="btnPrevious" fitHeight="64.0" fitWidth="100.0" onMouseClicked="#previousStudent" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../uiImg/icons/espalda.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Separator prefHeight="64.0" prefWidth="196.0" visible="false" />
+                                                      <ImageView fx:id="btnNext" fitHeight="64.0" fitWidth="65.0" onMouseClicked="#nextStudent" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../uiImg/icons/flecha.png" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -202,7 +214,7 @@
                                                       <Font name="Consolas Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <ListView fx:id="subjectList" prefHeight="200.0" prefWidth="303.0" />
+                                                <ListView fx:id="subjectList" prefHeight="239.0" prefWidth="422.0" />
                                                 <HBox alignment="CENTER" focusTraversable="true" prefHeight="169.0" prefWidth="503.0" spacing="8.0">
                                                    <padding>
                                                       <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
@@ -214,8 +226,8 @@
                                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.66665649414062" minWidth="10.0" prefWidth="169.0" />
                                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="0.0" prefWidth="0.0" />
                                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="0.66668701171875" prefWidth="7.3333740234375" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="120.6666259765625" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="90.66668701171875" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="65.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="145.0" />
                                                          </columnConstraints>
                                                          <rowConstraints>
                                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -242,7 +254,7 @@
                                                                   <Font size="5.0" />
                                                                </font>
                                                             </TextField>
-                                                            <Label text="Credits" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                            <Label text="Credits:" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                                <font>
                                                                   <Font name="Verdana" size="14.0" />
                                                                </font>
@@ -288,7 +300,7 @@
                      <content>
                         <BorderPane prefHeight="452.0" prefWidth="805.0">
                            <right>
-                              <VBox fillWidth="false" focusTraversable="true" prefHeight="441.0" prefWidth="571.0" BorderPane.alignment="CENTER">
+                              <VBox fillWidth="false" focusTraversable="true" prefHeight="563.0" prefWidth="542.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <VBox alignment="CENTER" fillWidth="false" prefHeight="151.0" prefWidth="535.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
                                        <children>
@@ -316,7 +328,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="47.0" prefWidth="364.0" spacing="8.0">
                                              <children>
-                                                <TextField fx:id="search" prefHeight="37.0" prefWidth="148.0" promptText="Enter your name" style="-fx-text-fill: black;" />
+                                                <TextField fx:id="search" prefHeight="37.0" prefWidth="148.0" style="-fx-text-fill: black;" />
                                                 <Button mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="75.0" text="Search" textFill="WHITE">
                                                    <font>
                                                       <Font size="10.0" />
@@ -339,7 +351,7 @@
                                           </Label>
                                           <ImageView fx:id="foundStudentImg" fitHeight="127.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../uiImg/mario_dubs.png" />
+                                                <Image url="@../uiImg/icons/busqueda%20(1).png" />
                                              </image>
                                           </ImageView>
                                           <GridPane alignment="CENTER_RIGHT" prefHeight="133.0" prefWidth="514.0">
@@ -359,8 +371,7 @@
                                                             <Font name="Consolas Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
-                                                      <TextField fx:id="foundName" prefHeight="37.0" prefWidth="169.0" />
+                                                      <TextField fx:id="foundName" prefHeight="37.0" prefWidth="183.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -370,19 +381,17 @@
                                                             <Font name="Consolas Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
-                                                      <TextField fx:id="foundEmail" prefHeight="37.0" prefWidth="169.0" />
+                                                      <TextField fx:id="foundEmail" prefHeight="37.0" prefWidth="205.0" />
                                                    </children>
                                                 </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                <HBox prefHeight="66.0" prefWidth="247.0" GridPane.rowIndex="1">
                                                    <children>
                                                       <Label fx:id="dScore" text="Code:">
                                                          <font>
                                                             <Font name="Consolas Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
-                                                      <TextField fx:id="foundCode" prefHeight="37.0" prefWidth="169.0" />
+                                                      <TextField fx:id="foundCode" prefHeight="37.0" prefWidth="189.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -392,7 +401,6 @@
                                                             <Font name="Consolas Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Separator prefHeight="30.0" prefWidth="11.0" />
                                                       <TextField fx:id="foundProgram" prefHeight="37.0" prefWidth="169.0" />
                                                    </children>
                                                 </HBox>
@@ -411,20 +419,28 @@
                               </VBox>
                            </right>
                            <left>
-                              <HBox fillHeight="false" prefHeight="563.0" prefWidth="561.0" BorderPane.alignment="CENTER">
+                              <HBox fillHeight="false" prefHeight="563.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <VBox fillWidth="false" focusTraversable="true" prefHeight="548.0" prefWidth="558.0" spacing="5.0">
+                                    <VBox fillWidth="false" focusTraversable="true" prefHeight="548.0" prefWidth="601.0" spacing="5.0">
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="46.0" prefWidth="508.0" />
-                                          <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="481.0" prefWidth="543.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;">
+                                          <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="545.0" prefWidth="590.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;">
                                              <children>
-                                                <TableView fx:id="foundStudent" prefHeight="322.0" prefWidth="539.0">
+                                                <HBox alignment="CENTER" prefHeight="56.0" prefWidth="539.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#sortName" text="Name" translateX="-10.0" />
+                                                      <Button mnemonicParsing="false" onAction="#sortLastName" prefHeight="39.0" prefWidth="100.0" text="LastName" translateX="-5.0" />
+                                                      <Button mnemonicParsing="false" onAction="#sortIdCode" prefHeight="39.0" prefWidth="80.0" text="IdCode" translateX="5.0" />
+                                                      <Button mnemonicParsing="false" onAction="#sortEmail" prefHeight="39.0" prefWidth="67.0" text="Email" translateX="10.0" />
+                                                      <Button mnemonicParsing="false" onAction="#sortPhoneNumber" prefHeight="39.0" prefWidth="128.0" text="PhoneNumber" translateX="20.0" />
+                                                   </children>
+                                                </HBox>
+                                                <TableView fx:id="foundStudent" prefHeight="464.0" prefWidth="539.0">
                                                   <columns>
-                                                    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-                                                    <TableColumn fx:id="lastColumn" prefWidth="140.0" text="Last Name" />
+                                                    <TableColumn fx:id="nameColumn" prefWidth="111.00003051757812" text="Name" />
+                                                    <TableColumn fx:id="lastColumn" prefWidth="103.99996948242188" text="Last Name" />
                                                       <TableColumn fx:id="codeColumn" prefWidth="105.0" text="idCode" />
-                                                      <TableColumn fx:id="emailColumn" prefWidth="76.0" text="Email" />
-                                                      <TableColumn fx:id="numberColumn" prefWidth="140.0" text="PhoneNumber" />
+                                                      <TableColumn fx:id="emailColumn" prefWidth="159.0" text="Email" />
+                                                      <TableColumn fx:id="numberColumn" prefWidth="102.0" text="PhoneNumber" />
                                                   </columns>
                                                 </TableView>
                                              </children></VBox>
@@ -506,17 +522,17 @@
                                     </Label>
                                     <HBox prefHeight="252.0" prefWidth="830.0">
                                        <children>
-                                          <TableView fx:id="subjectsTable" prefHeight="243.0" prefWidth="437.0">
+                                          <TableView fx:id="subjectsTable" prefHeight="252.0" prefWidth="695.0">
                                             <columns>
-                                              <TableColumn fx:id="subNameColumn" prefWidth="104.33334350585938" text="name" />
-                                              <TableColumn fx:id="nrcColumn" prefWidth="45.666656494140625" text="nrc" />
-                                                <TableColumn fx:id="facultyColumn" prefWidth="75.0" text="faculty" />
-                                                <TableColumn fx:id="creditsColumn" prefWidth="105.66665649414062" text="credits" />
-                                                <TableColumn fx:id="studentsColumn" prefWidth="104.33334350585938" text="students" />
+                                              <TableColumn fx:id="subNameColumn" prefWidth="321.0" text="NAME" />
+                                              <TableColumn fx:id="nrcColumn" minWidth="0.0" prefWidth="76.0" text="NRC" />
+                                                <TableColumn fx:id="facultyColumn" minWidth="2.0" prefWidth="81.0" text="FACULTY" />
+                                                <TableColumn fx:id="creditsColumn" prefWidth="91.0" text="CREDITS" />
+                                                <TableColumn fx:id="studentsColumn" prefWidth="119.0" text="STUDENTS" />
                                             </columns>
                                           </TableView>
-                                          <Separator prefHeight="243.0" prefWidth="31.0" visible="false" />
-                                          <Button mnemonicParsing="false" onAction="#showTable" text="update table" />
+                                          <Separator prefHeight="243.0" prefWidth="7.0" visible="false" />
+                                          <Button mnemonicParsing="false" onAction="#showTable" text="Update table" />
                                        </children>
                                     </HBox>
                                  </children>

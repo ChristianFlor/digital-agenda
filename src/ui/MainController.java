@@ -103,10 +103,10 @@ public class MainController {
     private ImageView photoStudent;
     
     @FXML
-    private Button btnPrevious;
+    private ImageView btnPrevious;
 
     @FXML
-    private Button btnNext;
+    private ImageView btnNext;
     
     @FXML
     private ListView<String> subjectList;
@@ -169,7 +169,7 @@ public class MainController {
     	agenda = new Agenda();
     	actualPosition = 0;
     	if(agenda.getStudents().get(0)!=null) {
-    		showInformation(1);
+    		showInformation(0);
     		
     	}
     	optionsSearch.getItems().addAll("Name", "idCode","Email");
@@ -215,9 +215,11 @@ public class MainController {
     	lessMatriculated.setText(agenda.lessMatriculated().getName());
     	
     }
+   
 
+   
 	@FXML
-    void nextStudent(ActionEvent event) {
+    void nextStudent(MouseEvent event) {
     	actualPosition++;
     	
     	if(actualPosition>=agenda.getStudents().size() ||agenda.getStudents().get(actualPosition)==null ) {
@@ -231,7 +233,7 @@ public class MainController {
     }
 
     @FXML
-    void previousStudent(ActionEvent event) {
+    void previousStudent(MouseEvent event) {
     		actualPosition--;
     	
     	if(actualPosition<0 ||agenda.getStudents().get(actualPosition)==null ) {
@@ -405,5 +407,28 @@ public class MainController {
     void uploadImage(ActionEvent event) {
 
     }
+    @FXML
+    void sortEmail(ActionEvent event) {
 
+    }
+
+    @FXML
+    void sortIdCode(ActionEvent event) {
+
+    }
+
+    @FXML
+    void sortLastName(ActionEvent event) {
+
+    }
+
+    @FXML
+    void sortName(ActionEvent event) {
+
+    }
+
+    @FXML
+    void sortPhoneNumber(ActionEvent event) {
+
+    }
 }
