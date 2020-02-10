@@ -27,6 +27,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import model.*;
 
 public class MainController {
@@ -60,6 +61,18 @@ public class MainController {
     private TextField txtCredits;
     @FXML
     private TextField txtFaculty;
+    
+    @FXML
+    private Text avarageSubjects;
+
+    @FXML
+    private Text avarageCredits;
+
+    @FXML
+    private Text moreMatriculated;
+
+    @FXML
+    private Text lessMatriculated;
     @FXML
     private ComboBox<String> optionsSearch;
 
@@ -116,6 +129,21 @@ public class MainController {
     private TableColumn<Student, String> numberColumn;
     
     @FXML
+    private TableColumn<Subject,String> subNameColumn;
+
+    @FXML
+    private TableColumn<Subject,Integer> nrcColumn;
+
+    @FXML
+    private TableColumn<Subject,String> facultyColumn;
+
+    @FXML
+    private TableColumn<Subject,Integer> creditsColumn;
+
+    @FXML
+    private TableColumn<Subject,Integer> studentsColumn;
+    
+    @FXML
     private TextField foundName;
 
 
@@ -127,6 +155,9 @@ public class MainController {
     
     @FXML
     private TextField foundProgram;
+    
+    @FXML
+    private TableView<Subject> subjectsTable;
 
     private Agenda agenda;
     private int actualPosition;
@@ -140,6 +171,10 @@ public class MainController {
     		
     	}
     	optionsSearch.getItems().addAll("Name", "idCode","Email");
+    	initializeTables();
+    }
+    
+    private void initializeTables() {
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
         lastColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("lname"));
@@ -162,8 +197,21 @@ public class MainController {
 			}
         	
         });
+        
+        subNameColumn.setCellValueFactory(new PropertyValueFactory<Subject, String>("name"));
+        nrcColumn.setCellValueFactory(new PropertyValueFactory<Subject, Integer>("nrc"));
+        facultyColumn.setCellValueFactory(new PropertyValueFactory<Subject, String>("faculty"));
+        creditsColumn.setCellValueFactory(new PropertyValueFactory<Subject, Integer>("credits"));
+        studentsColumn.setCellValueFactory(new PropertyValueFactory<Subject, Integer>("students"));
     }
- 
+    
+    @FXML
+    void calculate(ActionEvent event) {
+    	avarageSubjects.setText(""+agenda.calculateAverageSubjects());
+    	avarageCredits.setText(""+agenda.calculateAverageCredits());
+    	
+    }
+
 	@FXML
     void nextStudent(ActionEvent event) {
     	actualPosition++;
@@ -221,6 +269,12 @@ public class MainController {
 		    }
 		});
     }
+    @FXML
+    void showTable(ActionEvent event) {
+    	ObservableList<Subject> inf = (ObservableList<Subject>) agenda.converToList();
+		subjectsTable.setItems(inf);
+    }
+
     @FXML
     void aboutProgram(ActionEvent event) {
     	
@@ -337,25 +391,7 @@ public class MainController {
     	
     }
 
-    @FXML
-    void sortCode(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sortEmail(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sortId(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sortName(ActionEvent event) {
-
-    }
+    
 
     @FXML
     void update(ActionEvent event) {

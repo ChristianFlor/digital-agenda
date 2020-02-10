@@ -272,6 +272,38 @@ public class Agenda {
 		}
 	}
 	
+	public double calculateAverageSubjects() {
+		int total=0;
+		double avarage = 0;
+		for (int i = 0; i < students.size(); i++) {
+			total+=students.get(i).getSubjects().size();
+		}
+		avarage = total/students.size();
+		return avarage;
+	}
+	
+	public double calculateAverageCredits() {
+		int total=0;
+		double avarage = 0;
+		for (int i = 0; i < students.size(); i++) {
+			for (int j = 0; j < students.get(i).getSubjects().size(); j++) {
+				total+=students.get(i).getSubjects().get(j).getCredits();
+				
+			}
+			
+			
+		}
+		avarage = total/students.size();
+		return avarage;
+	}
+	
+	public List<Subject> converToList(){
+		List<Subject> subs = new ArrayList<>();
+		for (Subject subject : subs) {
+			subs.add(subject);
+		}
+		return subs;
+	}
 	public List<Student> getStudents() {
 		return students;
 	}

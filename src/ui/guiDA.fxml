@@ -14,7 +14,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -417,14 +416,7 @@
                                  <children>
                                     <VBox fillWidth="false" focusTraversable="true" prefHeight="548.0" prefWidth="558.0" spacing="5.0">
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="46.0" prefWidth="508.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#sortId" text="ID" translateX="-10.0" />
-                                                <Button mnemonicParsing="false" onAction="#sortName" prefHeight="39.0" prefWidth="83.0" text="Name" translateX="-5.0" />
-                                                <Button mnemonicParsing="false" onAction="#sortCode" prefHeight="39.0" prefWidth="75.0" text="Code" translateX="5.0" />
-                                                <Button mnemonicParsing="false" onAction="#sortEmail" prefHeight="39.0" prefWidth="67.0" text="Email" translateX="10.0" />
-                                             </children>
-                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="46.0" prefWidth="508.0" />
                                           <VBox fx:id="vBoxList" alignment="CENTER" prefHeight="481.0" prefWidth="543.0" style="-fx-border-color: #4285F4; -fx-border-width: 2;">
                                              <children>
                                                 <TableView fx:id="foundStudent" prefHeight="322.0" prefWidth="539.0">
@@ -452,53 +444,59 @@
                      <content>
                         <BorderPane prefHeight="452.0" prefWidth="805.0">
                            <center>
-                              <VBox prefHeight="540.0" prefWidth="643.0" BorderPane.alignment="CENTER">
+                              <VBox prefHeight="611.0" prefWidth="870.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <VBox alignment="CENTER" fillWidth="false" prefHeight="239.0" prefWidth="766.0" style="-fx-border-color: #4285F4; -fx-border-width: 2; -fx-border-radius: 15;">
                                        <children>
-                                          <GridPane alignment="CENTER_RIGHT" prefHeight="216.0" prefWidth="587.0">
-                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.66668701171875" minWidth="10.0" prefWidth="341.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.6666259765625" minWidth="10.0" prefWidth="220.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                             </rowConstraints>
+                                          <HBox prefHeight="224.0" prefWidth="733.0">
                                              <children>
-                                                <Label text="Promedio de materias matriculadas x estudiante:">
-                                                   <font>
-                                                      <Font name="Verdana" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="Materia más matriculada:" GridPane.rowIndex="2">
-                                                   <font>
-                                                      <Font name="Verdana" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="Base real:" visible="false" GridPane.rowIndex="2">
-                                                   <font>
-                                                      <Font name="Verdana" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="Promedio de créditos matriculados x estudiante:" GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font name="Verdana" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label text="Materia menos matriculada:" GridPane.rowIndex="3">
-                                                   <font>
-                                                      <Font name="Verdana" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="216.80340576171875" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <GridPane alignment="CENTER_RIGHT" prefHeight="216.0" prefWidth="458.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.66668701171875" minWidth="10.0" prefWidth="319.6666564941406" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.6666259765625" minWidth="10.0" prefWidth="33.333343505859375" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Promedio de materias matriculadas x estudiante:">
+                                                         <font>
+                                                            <Font name="Verdana" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Materia más matriculada:" GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font name="Verdana" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Base real:" visible="false" GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font name="Verdana" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Promedio de créditos matriculados x estudiante:" GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font name="Verdana" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Materia menos matriculada:" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font name="Verdana" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Text fx:id="avarageSubjects" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="82.13671875" GridPane.columnIndex="1" />
+                                                      <Text fx:id="avarageCredits" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="74.13671875" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Text fx:id="moreMatriculated" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="78.13671875" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Text fx:id="lessMatriculated" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="70.13671875" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                   </children>
+                                                </GridPane>
+                                                <Separator prefHeight="67.0" prefWidth="114.0" visible="false" />
+                                                <Button mnemonicParsing="false" onAction="#calculate" text="Calculate" />
                                              </children>
-                                          </GridPane>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                     <Separator orientation="VERTICAL" prefHeight="23.0" prefWidth="822.0" />
@@ -507,10 +505,19 @@
                                           <Font name="Consolas Bold" size="24.0" />
                                        </font>
                                     </Label>
-                                    <HBox prefHeight="243.0" prefWidth="822.0">
+                                    <HBox prefHeight="252.0" prefWidth="830.0">
                                        <children>
-                                          <Separator prefHeight="243.0" prefWidth="74.0" visible="false" />
-                                          <TextArea prefHeight="243.0" prefWidth="465.0" />
+                                          <TableView fx:id="subjectsTable" prefHeight="243.0" prefWidth="437.0">
+                                            <columns>
+                                              <TableColumn fx:id="subNameColumn" prefWidth="104.33334350585938" text="name" />
+                                              <TableColumn fx:id="nrcColumn" prefWidth="45.666656494140625" text="nrc" />
+                                                <TableColumn fx:id="facultyColumn" prefWidth="75.0" text="faculty" />
+                                                <TableColumn fx:id="creditsColumn" prefWidth="105.66665649414062" text="credits" />
+                                                <TableColumn fx:id="studentsColumn" prefWidth="104.33334350585938" text="students" />
+                                            </columns>
+                                          </TableView>
+                                          <Separator prefHeight="243.0" prefWidth="31.0" visible="false" />
+                                          <Button mnemonicParsing="false" onAction="#showTable" text="Show table" />
                                        </children>
                                     </HBox>
                                  </children>
