@@ -259,6 +259,7 @@ public class MainController {
 		subjectList.getItems().clear();
 
 		for (int i = 0; i<next.getSubjects().size(); i++) {
+			if(next.getSubjects().get(i)!=null)
 			subjectList.getItems().add(next.getSubjects().get(i).getNrc()+" "+next.getSubjects().get(i).getName());
 		}
 		subjectList.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -391,7 +392,19 @@ public class MainController {
 			foundStudent.setItems(info);
 		}
 	}
-
+	@FXML
+    void deleteSubject(ActionEvent event) throws NumberFormatException, FileNotFoundException, IOException {
+		if(!nrcSubject.getText().isEmpty()) {
+			agenda.deleteSubjectToStudent(codeStudent.getText(), Integer.parseInt(nrcSubject.getText()));
+			subjectList.getItems().remove(nrcSubject.getText()+" "+nameSubject.getText());
+		}else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("first select a subject");
+			alert.showAndWait();
+		}
+    }
 
 	@FXML
 	public void uploadImage(ActionEvent event) {
