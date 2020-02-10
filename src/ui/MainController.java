@@ -30,6 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import model.*;
 
 public class MainController {
@@ -408,8 +409,11 @@ public class MainController {
 
 	@FXML
 	public void uploadImage(ActionEvent event) {
-
+		FileChooser fc = new FileChooser();
+		File f = fc.showOpenDialog(btnConfirm.getScene().getWindow());
+		photoStudent.setImage(new Image(f.toURI().toString()));
 	}
+	
 	@FXML
 	public void sortEmail(ActionEvent event) {
 
