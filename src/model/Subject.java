@@ -1,6 +1,6 @@
  package model;
 
-public class Subject {
+public class Subject implements Comparable<Subject>{
 	
 	private String name;
 	private int nrc;
@@ -82,6 +82,12 @@ public class Subject {
 	 */
 	public void setStudents(int students) {
 		this.students = students;
+	}
+
+	@Override
+	public int compareTo(Subject oth) {
+		
+		return this.name.compareTo(oth.name);
 	}
 
 }

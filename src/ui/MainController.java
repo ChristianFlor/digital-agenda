@@ -4,6 +4,8 @@ package ui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -208,7 +210,9 @@ public class MainController {
     @FXML
     void calculate(ActionEvent event) {
     	avarageSubjects.setText(""+agenda.calculateAverageSubjects());
-    	avarageCredits.setText(""+agenda.calculateAverageCredits());
+    	//avarageCredits.setText(""+agenda.calculateAverageCredits());
+    	moreMatriculated.setText(agenda.mostMatriculated().getName());
+    	lessMatriculated.setText(agenda.lessMatriculated().getName());
     	
     }
 
@@ -271,8 +275,13 @@ public class MainController {
     }
     @FXML
     void showTable(ActionEvent event) {
-    	ObservableList<Subject> inf = (ObservableList<Subject>) agenda.converToList();
-		subjectsTable.setItems(inf);
+    	subjectsTable.getItems().clear();
+    	List<Subject> subs = agenda.converToList();
+    	Collections.sort(subs);
+    	for (int i = 0; i < subs.size(); i++) {
+    		subjectsTable.getItems().add(subs.get(i));
+		}
+		
     }
 
     @FXML
@@ -391,12 +400,6 @@ public class MainController {
     	
     }
 
-    
-
-    @FXML
-    void update(ActionEvent event) {
-
-    }
 
     @FXML
     void uploadImage(ActionEvent event) {
