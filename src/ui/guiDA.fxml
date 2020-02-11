@@ -23,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="702.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
+<StackPane prefHeight="702.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
    <children>
       <BorderPane>
          <top>
@@ -124,7 +124,7 @@
                                                                   <Font name="Verdana" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label text="Uplouad Image:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                            <Label text="Upload Image:" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                                <font>
                                                                   <Font name="Verdana" size="14.0" />
                                                                </font>
@@ -173,7 +173,7 @@
                                                          </image>
                                                       </ImageView>
                                                       <Separator prefHeight="64.0" prefWidth="62.0" visible="false" />
-                                                      <Button mnemonicParsing="false" onAction="#updateStudent" prefHeight="39.0" prefWidth="98.0" text="update" />
+                                                      <Button mnemonicParsing="false" onAction="#updateStudent" prefHeight="39.0" prefWidth="98.0" text="Update" />
                                                       <Separator prefHeight="64.0" prefWidth="58.0" visible="false" />
                                                       <ImageView fx:id="btnNext" fitHeight="64.0" fitWidth="65.0" onMouseClicked="#nextStudent" pickOnBounds="true" preserveRatio="true">
                                                          <image>

@@ -2,8 +2,13 @@ package ui;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.channels.FileChannel;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -164,10 +169,12 @@ public class MainController {
 
 	private Agenda agenda;
 	private int actualPosition;
+	private boolean registering;
 
 	@FXML
 	public void initialize() throws FileNotFoundException, IOException {
 		agenda = new Agenda();
+		registering = false;
 		actualPosition = 0;
 		if(agenda.getStudents().get(0)!=null) {
 			showInformation(0);
@@ -227,6 +234,8 @@ public class MainController {
 			actualPosition = 0;
 		}
 		showInformation(actualPosition);
+		if(btnConfirm.isVisible()) btnConfirm.setVisible(false);
+		registering = false;
 		nameSubject.clear();
 		nrcSubject.clear();
 		txtFaculty.clear();
@@ -241,6 +250,8 @@ public class MainController {
 			actualPosition = agenda.getStudents().size()-1;
 		}
 		showInformation(actualPosition);
+		if(btnConfirm.isVisible()) btnConfirm.setVisible(false);
+		registering = false;
 		nameSubject.clear();
 		nrcSubject.clear();
 		txtFaculty.clear();
@@ -291,13 +302,38 @@ public class MainController {
 
 	@FXML
 	public void addSubject(ActionEvent event) throws IOException {
-		String name = nameSubject.getText();
-		int nrc = Integer.parseInt(nrcSubject.getText());
-		String faculty = txtFaculty.getText();;
-		int credits = Integer.parseInt(txtCredits.getText());
-		agenda.addSubjectToStudent(codeStudent.getText(), name, nrc, faculty, credits, 0);
-
-		subjectList.getItems().add(nrc+" "+name);
+		if(!registering) {
+			if(!nameSubject.getText().isEmpty()&&!nrcSubject.getText().isEmpty()&&!txtFaculty.getText().isEmpty()&&!txtCredits.getText().isEmpty()) {
+				String name = nameSubject.getText();
+				int nrc = 0;
+				String faculty = txtFaculty.getText();
+				int credits = 0;
+				try {
+					nrc = Integer.parseInt(nrcSubject.getText());
+					credits = Integer.parseInt(txtCredits.getText());
+					agenda.addSubjectToStudent(codeStudent.getText(), name, nrc, faculty, credits, 0);
+					subjectList.getItems().add(nrc+" "+name);
+				}catch(NumberFormatException e) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setHeaderText(null);
+					alert.setTitle("Error");
+					alert.setContentText("Please enter a valid number of credits and nrc");
+					alert.showAndWait();
+				}
+			}else {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Please fill all fields");
+				alert.showAndWait();
+			}
+		}else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("First finish registering the student");
+			alert.showAndWait();
+		}
 	}
 
 	@FXML
@@ -329,7 +365,8 @@ public class MainController {
 		phoneStudent.clear();
 		Image img = new Image(new File("src/uiImg/icons/agregar-usuario.png").toURI().toString());
 		photoStudent.setImage(img);
-
+		
+		registering = true;
 		subjectList.getItems().clear();
 		subjectList.getItems().clear();
 		btnConfirm.setVisible(true);
@@ -346,17 +383,23 @@ public class MainController {
 		String program = programStudent.getText();
 		String code = codeStudent.getText();
 		String phone = phoneStudent.getText();
-		String profpic = photoStudent.getImage().impl_getUrl();
-		boolean verification = name!="" && email!="" && program!=""&&code!=""&&phone!="";
+		String profpic = photoStudent.getId();
+		boolean verification = !name.isEmpty() && !email.isEmpty()  && !program.isEmpty() &&!code.isEmpty() &&!phone.isEmpty() ;
 		if(verification) {
 			String[] fullName = name.split(" ");
-			agenda.registerStudent(fullName[0], fullName[1], code, program, 0, email, profpic, phone);
-
+			agenda.registerStudent(fullName[0], fullName.length==2?fullName[1]:"", code, program, 0, email, profpic, phone);
+			registering = false;
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setHeaderText(null);
 			alert.setTitle("Confirmation");
 			alert.setContentText("a new student has registered");
 			alert.showAndWait();
+			
+		}else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Please fill every field");
+			alert.show();
 		}
 
 	}
@@ -398,6 +441,7 @@ public class MainController {
 		if(!nrcSubject.getText().isEmpty()) {
 			agenda.deleteSubjectToStudent(codeStudent.getText(), Integer.parseInt(nrcSubject.getText()));
 			subjectList.getItems().remove(nrcSubject.getText()+" "+nameSubject.getText());
+			nameSubject.clear(); nrcSubject.clear(); txtFaculty.clear(); txtCredits.clear();
 		}else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
@@ -413,19 +457,42 @@ public class MainController {
 		 String code = codeStudent.getText();
 		 String program = programStudent.getText();
 		 String phone = phoneStudent.getText();
-		 agenda.editSudent(actualPosition, code, name, email, program, phone);
-		 
-		 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setHeaderText(null);
+		 boolean verification = !name.isEmpty() && !email.isEmpty()  && !program.isEmpty() &&!code.isEmpty() &&!phone.isEmpty();
+		 if(verification && agenda.editSudent(actualPosition, code, name, email, program, phone)) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		 	alert.setHeaderText(null);
 			alert.setTitle("Confirmation");
-			alert.setContentText("the information of the student has been update");
+			alert.setContentText("the information of the student has been updated");
 			alert.showAndWait();
+		 }else {
+			 Alert alert = new Alert(Alert.AlertType.ERROR);
+			 alert.setTitle("Can't update student");
+			 alert.setContentText("The student couldn't be updated");
+			 alert.show();
+		 }
 	}
 	@FXML
-	public void uploadImage(ActionEvent event) {
+	public void uploadImage(ActionEvent event) throws FileNotFoundException, IOException {
 		FileChooser fc = new FileChooser();
 		File f = fc.showOpenDialog(btnConfirm.getScene().getWindow());
+		File dest = new File("resources/avatars/" + f.getName());
+		if(!dest.exists()) {
+			FileInputStream fileInputStream = new FileInputStream(f);
+			FileOutputStream fileOutputStream = new FileOutputStream(dest);
+			int bufferSize;
+			byte[] bufffer = new byte[512];
+			while ((bufferSize = fileInputStream.read(bufffer)) > 0) {
+			    fileOutputStream.write(bufffer, 0, bufferSize);
+			}
+			fileInputStream.close();
+			fileOutputStream.close();
+		}
 		photoStudent.setImage(new Image(f.toURI().toString()));
+		if(!registering)
+			agenda.editStudentPhoto(actualPosition, "resources/avatars/" + f.getName());
+		else
+			photoStudent.setId("resources/avatars/" + f.getName());
+		
 	}
 	
 	@FXML

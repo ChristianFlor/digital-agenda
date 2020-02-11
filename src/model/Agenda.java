@@ -59,7 +59,8 @@ public class Agenda {
 			bw.append("phoneNumber="+phoneNumber+"\n");
 			bw.append("program="+program+"\n");
 			bw.append("profpic="+profpic+"\n");
-			bw.append("semester="+semester);
+			bw.append("semester="+semester+"\n");
+			bw.append("subjects=");
 			
 			bw.close();
 			fw.close();
@@ -164,6 +165,7 @@ public class Agenda {
 							subjectss += ","+nrcc;
 						}else
 							subjectss += nrcc;
+						cnt++;
 					}else
 						possible = true;
 				}
@@ -259,12 +261,15 @@ public class Agenda {
 			String prog = p.getProperty("program");
 			int semester = Integer.parseInt(p.getProperty("semester"));
 			String pp = p.getProperty("profpic");
-			String[] subs = p.getProperty("subjects").split(",");
+			String aux = p.getProperty("subjects");
+			
 			students.add(new Student(name, lname, id, prog, email, pn, pp, semester));
-			for (int i = 0; i < subs.length; i++) {
-				int nrc=  Integer.parseInt(subs[i]);
-				students.get(students.size()-1).addSubject(subjects.get(nrc));
-				
+			if(!aux.isEmpty()) {
+				String[] subs = aux.split(",");
+				for (int i = 0; i < subs.length; i++) {
+					int nrc=  Integer.parseInt(subs[i]);
+					students.get(students.size()-1).addSubject(subjects.get(nrc));	
+				}
 			}
 			
 			inputStream.close();
@@ -372,7 +377,7 @@ public class Agenda {
 				p.setProperty("id", curr.getIdCode());
 				p.setProperty("phoneNumber", curr.getName());
 				p.setProperty("program", curr.getProgram());
-				p.setProperty("profPic", curr.getProfpic());
+				p.setProperty("profpic", curr.getProfpic());
 				p.setProperty("semester", ""+curr.getSemester());
 				String subs = "";
 				for (int i = 0; i < curr.getSubjects().size(); i++) {
@@ -384,6 +389,25 @@ public class Agenda {
 				
 				p.store(new FileWriter(propStud), "add subject");
 				
+			}
+			
+		return can;
+	}
+	
+	public boolean editStudentPhoto(int index, String profpic) throws FileNotFoundException, IOException {
+		boolean can = false;
+		Student curr = students.get(index);
+		String idCode = curr.getIdCode();
+		curr.setProfpic(profpic);
+		File[] studs = new File(STUDENTS_PATH).listFiles();
+		for(File propStud : studs) {
+			Properties p = new Properties();
+			p.load(new FileInputStream(propStud.getPath()));
+			if(p.getProperty("id").equals(idCode)) {
+				p.setProperty("profpic", curr.getProfpic());
+				can = true;
+			}
+				p.store(new FileWriter(propStud), "updated profile picture");
 			}
 			
 		return can;
