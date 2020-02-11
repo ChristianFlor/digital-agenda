@@ -27,6 +27,11 @@ This project is a mini agenda built with the purpose of mastering the basic conc
   ~~~
   ![Overview](resources/overview/main-view.png?raw=true)
 
+### _Plus_
++ This README is written in pure markdown.
++ Worked with .properties files.
++ Searching by name and surname returns the list of all possible matches, not a single match.
++ Data from students is independent of data from the subjects. You can manage any of them in an individual tab.
 ## Made by
 + [Cesar Leonardo Canales Rivera](https://github.com/Sleeptightt "Cesar Canales")
 + [Christian David Flor Astudillo](https://github.com/ChristianFlor "Christian Flor")
